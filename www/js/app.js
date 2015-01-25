@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
 
         // Initialize database
-        // DB.init();
+        DB.init();
     });
 })
 
