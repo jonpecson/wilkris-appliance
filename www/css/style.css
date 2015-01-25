@@ -1,1 +1,372 @@
 /* Empty. Add your own CSS if you like */
+
+@font-face {
+    font-family: dosis-medium;
+    src: url(../fonts/Dosis-Medium.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: dosis;
+    src: url(../fonts/Dosis-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: dosis-extrabold;
+    src: url(../fonts/Dosis-ExtraBold.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal
+}
+
+/* Empty. Add your own CSS if you like */
+
+/* font */
+@font-face {
+    font-family: roboto-lt;
+    src: url(../fonts/Roboto-Light.ttf);
+}
+@font-face {
+    font-family: roboto-black;
+    src: url(../fonts/Roboto-Black.ttf);
+}
+@font-face {
+    font-family: roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: roboto-thin;
+    src: url(../fonts/Roboto-Thin.ttf);
+}
+
+h6 {
+	color : #8F8F8F;
+	margin-top: 2px;
+    margin-bottom: 2.33em;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.profile-preview {
+    background-color:#3F3F3F;
+    background: url(../img/side07.png);
+    background-size: cover;
+    width: 115%
+}
+/*override*/
+.item-avatar > img:first-child {
+    border-radius:50%;
+    
+}
+
+.profile-preview > h2{
+    color:#BBBDC0;
+    font-family: roboto-lt;
+}
+
+.link {
+    color:#FFFFFF;
+    text-decoration:none;
+}
+
+
+/*Login*/
+.small {
+  font-size:80% !important;
+}
+
+.respect-privacy {
+  color:white;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-image {
+/*  position: fixed;
+  width: 100%;
+  height: 100%;*/
+  background-size: cover;
+  width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
+}
+
+.red-car-img {
+  background-image: url("../img/login.jpg"); 
+
+}
+
+.login-bottom {
+  position:absolute;
+  bottom: 40px;
+  right: 0px;
+  left: 0px;
+}
+
+.list {
+  background: white;
+}
+
+.item-content .row, .item-content .col {
+  padding:0;
+}
+
+.login-title {
+  color:white;
+  font-family: Trebuchet MS1, Trebuchet MS, sans-serif;
+  text-align: center;
+  font-size: 36px;
+  margin-top: 80px !important;
+  margin-bottom:20px;
+}
+
+.padding map {
+  border: 1px solid lightgrey;
+  margin-top: -1px;
+}
+
+.bar-transparent h1 {
+  color:white;
+}
+
+.pull-right {
+  float:right;
+  right:109x;
+}
+
+.forgot-password {
+  color:white;
+  margin-right:11px;
+  text-decoration: none;
+  margin-top:-13px;
+}
+
+/*Gallery*/
+
+.slider { 
+  /*height:auto; */
+  /*text-align: center;     
+  height: 100%;*/  
+  /*width: 100%; */
+  position: absolute;
+
+      width: 100%;
+
+      /*height: 100%;*/
+
+      background-size: cover;
+
+      background-color: purple;
+}
+.scroll { height: 100% }
+
+/*img {
+    max-width: 100%;
+    height: auto;  
+
+    margin-bottom:20px; 
+    padding-bottom: 20px; 
+}
+*/
+#bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+/*About*/
+
+#profile-image {
+  display: block;
+  /*border-radius: 100px;*/
+  /*border: 0px solid #fff;*/
+  width: 90px;
+  height: 90px;
+  margin: 10px auto 0;
+  /*box-shadow: 0px 0px 4px rgba(0,0,0,0.7);*/
+  /*background-color: white;*/
+}
+
+.circle {
+  border-radius: 100px;
+}
+
+/*Add subjects*/
+
+.optionList{
+    position:absolute;
+    width:100%;
+    z-index:100;
+   /* height:200px;*/
+}
+
+/*Students*/
+.member {
+    padding: 10px;
+}
+.member .profile-circle {
+    float: left;
+    width: 55px;
+    height: 55px;
+    /*background: url(http://goo.gl/lFkur);*/
+    
+    border: 1px solid #ABABAB;
+    border-radius: 100%;
+    margin: -8px 0 -10px -15px;
+}
+.member .item-content {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 5px;
+}
+.member .profile-circle.admin {
+    border-color: #167ffb;
+}
+.member .initials {
+    float: left;
+    width: 55px;
+    margin: 9px -55px;
+    text-align: center;
+    color: #167ffb;
+}
+.oversized {
+    font-size: 1.3em;
+}
+.member-name {
+    font-size: 1.0em;
+    color: black;
+    padding-left: 15px;
+}
+.member-course {
+    font-size: .8em;
+    color: black;
+    padding-left: 15px;
+}
+.member-gender {
+    font-size: .9em;
+    color: black;
+    padding-left: 15px;
+}
+.member-name-position {
+    left: 50px;
+    top: 20px;
+}
+.member-funds-position {
+    left: 50px;
+    top: 40px;
+}
+
+.blur-dropshadow .member-name, .blur-dropshadow .accent, .blur-dropshadow .accent .button, .blur-dropshadow .item, .blur-dropshadow .initials, .blur-dropshadow .black, .blur-dropshadow .red, .blur-dropshadow .green, .blur-dropshadow .bar.bar-dark .title, .blur-dropshadow h1, .blur-dropshadow h2, .blur-dropshadow h3, .blur-dropshadow h4, .blur-dropshadow h5, .blur-dropshadow h6 {
+    color: rgba(0, 0, 0, 0) !important;
+}
+
+.col-95 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 95%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 95%;
+    -ms-flex: 0 0 95%;
+    flex: 0 0 95%;
+    max-width: 95%;
+}
+.col-5 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 5%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 5%;
+    -ms-flex: 0 0 5%;
+    flex: 0 0 5%;
+    max-width: 5%;
+}
+.col-90 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 90%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 90%;
+    -ms-flex: 0 0 90%;
+    flex: 0 0 90%;
+    max-width: 90%;
+}
+.col-10 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 10%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 10%;
+    -ms-flex: 0 0 10%;
+    flex: 0 0 10%;
+    max-width: 10%;
+}
+.col-20 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 20%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 20%;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+.col-85 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 85%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 85%;
+    -ms-flex: 0 0 85%;
+    flex: 0 0 85%;
+    max-width: 85%;
+}
+
+.accent, .accent .button {
+    color: #167ffb;
+}
+
+ .item-background {
+    background-image: url(../img/list-item-bg-kleiner.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-left: 20px;
+}
+ .item-background.positive {
+    background-image: url(../img/list-item-bg-positive-kleiner.png);
+}
+ .item-background.negative {
+    background-image: url(../img/list-item-bg-negative-kleiner.png);
+}
+ .item-background.expenses {
+    background-image: url(../img/list-item-bg-expenses-kleiner.png);
+}
+ .expenses .item-content {
+    padding-left: 0;
+}
+.list .item {
+    border-left: 0;
+    border-right: 0;
+}
+.list a.item-content:after, .list button.item-content:after {
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    display: block;
+    margin-top: -8px;
+    color: #ccc;
+    content: "\f125";
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 16px;
+    font-family: 'Ionicons';
+    line-height: 1;
+    speak: none;
+}

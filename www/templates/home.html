@@ -1,0 +1,53 @@
+<ion-view title="KCC Attendance Tracker">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content scrollbar-y="false">
+
+        <div class="row">
+
+            <div class="col">
+
+                <div ng-if="!($index%2==0)" ng-repeat="subject in subjects">
+
+                    <div class="card topics-page-card">
+
+                        <div>
+                            <img ng-src="img/{{subject.icon}}" class="topics-img">
+
+                            <div class="topic-name-topic">
+                                <p>{{subject.subjectName}}</p><i class="icon ion-arrow-right-b"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="col">
+
+                <div ng-if="($index%2==0)" ng-repeat="subject in subjects">
+
+                    <div class="card topics-page-card">
+                        <div>
+                            <img ng-src="img/{{subject.icon}}" class="topics-img">
+                        </div>
+                        <div class="topic-name-topic">
+                            <p>{{subject.subjectName}}</p>
+                            <i class="icon ion-arrow-right-b"></i>
+                        </div>
+                    </div>
+
+                    <p> </p>
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+
+    </ion-content>
+</ion-view>

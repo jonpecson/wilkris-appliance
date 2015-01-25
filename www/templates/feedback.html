@@ -1,0 +1,133 @@
+<style>
+.group {
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 26px;
+    margin-left: 13px;
+}
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575 !important;
+}
+input:focus {
+    outline: none;
+}
+label {
+    color: #999;
+    font-size: 16px !important;
+    font-family: dosis-medium!important;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 8px;
+    transition: .2s ease all;
+    -webkit-transition: .2s ease all;
+}
+.barip-input {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.barip-input:before,
+.barip-input:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #2196F3;
+    transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.barip-input:before {
+    left: 50%;
+}
+.barip:after {
+    right: 50%;
+}
+input:focus ~ .barip:before,
+input:focus ~ .barip:after {
+    width: 50%;
+}
+input:focus ~ label,
+input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #2196F3;
+}
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+input[type="text"] {
+    margin-left: 6px;
+    color: #313131;
+    font-family: dosis-medium;
+}
+input:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+    -webkit-animation: inputHighlighter 0.3s ease;
+}
+@keyframes inputHighlighter {
+    from {
+        background: #2196F3;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #2196F3;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+.bar-subheader {
+    top: 57px;
+    display: block;
+    height: 41em;
+}
+</style>
+<ion-view view-title="Feedback">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-android-menu "></button>
+    </ion-nav-buttons>
+    <div class="bar bar-subheader" style="padding-top:11px;">
+        <form>
+            <div class="item item-icon-left item-icon-right"><i class="icon ion-android-person content-sug-icon"></i>
+                <div class="group">
+                    <input type="text" required="" ng-model="feedback.userName"><span class="highlight"></span> <span class="barip"></span>
+                    <label>Name</label>
+                </div>
+            </div>
+            <div class="item item-icon-left item-icon-right"><i class="icon ion-at content-sug-icon"></i>
+                <div class="group">
+                    <input type="text" required="" ng-model="feedback.userEmail"><span class="highlight"></span> <span class="barip"></span>
+                    <label>Email -- Optional</label>
+                </div>
+            </div>
+            <div class="item item-icon-left item-icon-right"><i class="icon ion-android-mail content-sug-icon"></i>
+                <div class="group">
+                    <input type="textarea" required="" ng-model="feedback.message"><span class="highlight"></span> <span class="barip"></span>
+                    <label>Message</label>
+                </div>
+            </div>
+            <div class="card-link-text sug-post" ng-click="submit()">SUBMIT</div>
+        </form>
+    </div>
+    <ion-content class="padding spc-from-header" scrollbar-y="false"></ion-content>
+</ion-view>

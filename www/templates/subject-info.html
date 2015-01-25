@@ -1,0 +1,89 @@
+<ion-view view-title="{{subject.subjectName}}">
+
+    <ion-nav-buttons side="right">
+        <a class="button button-icon icon ion-android-create" href="#/app/subject-detail/{{id}}-update"></a>
+        <button class="button button-icon icon ion-android-delete"></button>
+        <button class="button button-icon icon ion-android-person-add"></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <!--         <ion-slide-box style="height:100%">
+
+            <ion-slide> -->
+        <ion-content scrollbar-y="false">
+            <!-- <h3 class="help-page-header">{{subject.subjectName}}</h3> -->
+
+            <div class="list card text-center">
+                <div class="item item-image">
+                    <div class="help-cards">
+                        <img id="profile-image" src="img/{{subject.icon}}">
+                    </div>
+                </div>
+                <a class="item card-main-text item-text-wrap">
+                    <h3 class="help-header">{{subject.subjectName}}</h3>
+                    <p class="help-explain">{{subject.desc}}</p>
+                    <p class="help-explain">{{subject.timeFrom| date:'HH:mm a'}} - {{subject.timeTo| date:'HH:mm a'}} </p>
+                    <p class="help-explain">({{subject.days}})</p>
+                    <h6>{{subject.location}}</h6>
+
+
+                </a>
+            </div>
+
+            <ion-list>
+                <ion-item class="item item-avatar item-divider home-divider">
+                    <i class="icon ion-android-people card-side-icon"></i>
+                    <h2 class="card-head">Students</h2>
+                    <span class="badge badge-balanced">8</span>
+                </ion-item>
+
+                <ion-item class="item-remove-animate item-avatar" ng-repeat="student in students" type="item-text-wrap">
+                    <img ng-src="{{student.face}}">
+                    <h2>{{student.firstName}} {{student.lastName}}</h2>
+                    <div>{{student.course}}</div>
+                    <h6>
+                      {{student.gender}}
+                    </h6>
+                </ion-item>
+
+            </ion-list>
+
+            <!-- <ion-list>
+                <div ng-repeat="student in students" class="member-container item-background expenses">
+                    <ion-item class="member" item-type="a">
+                        <div class="row">
+                            <div class="col col-75">
+                                <div class="profile-circle admin"></div>
+                                <div class="initials">
+                                    {{student.firstName.charAt(0)}}{{student.lastName.charAt(0)}}
+                                </div>
+                                <span class="member-name member-name-position">
+                                    {{student.firstName}} {{student.lastName}}
+                                </span>
+                                <br>
+                                <span class="member-course">
+                                     {{student.course}}
+                                </span>
+                                <br />
+                                
+
+                            </div>
+                        </div>
+                    </ion-item>
+                </div>
+
+            </ion-list>
+            <div class="row accent">
+                <div class="col col-75">
+                    <h2>
+                        Change me
+                    </h2>
+                </div>
+            </div> -->
+
+        </ion-content>
+
+    </ion-content>
+
+
+</ion-view>
