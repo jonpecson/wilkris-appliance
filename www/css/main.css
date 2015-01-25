@@ -1422,6 +1422,7 @@ div.has-border {
     height: 175px;
     padding-top: 34px;
     background: url(../img/tech01.jpg);
+    width: 100%;
 }
 .help-cards i {
     color: #fff;
