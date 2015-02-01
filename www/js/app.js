@@ -176,7 +176,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 })
 
 .constant('DB_CONFIG', {
-    name: 'AttendanceTrackerDbv1.0.1.beta.1.26',
+    name: 'AttendanceTrackerDbv1.0.1.beta.1.27',
     tables: {
         subjects: {
             id: 'integer primary key',
@@ -201,8 +201,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         },
         attendance: {
             id: 'integer primary key',
-            subjectId: 'text',
-            studentId: 'text',
+            subjectId: 'integer',
+            studentId: 'integer',
             status: 'text',
             dateTime:  'text'
         }

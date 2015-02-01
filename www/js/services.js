@@ -291,6 +291,41 @@ angular.module('starter.services', [])
     return self;
 })
 
+.factory('Attendance', function(DB) {
+    var self = this;
+
+    self.getFirst = function(number) {
+        return DB.query("SELECT * FROM attendance LIMIT ?", [number])
+            .then(function(result) {
+                return DB.fetchAll(result);
+            });
+    };
+
+    self.getById = function(id) {
+        return DB.query("SELECT * FROM attendance WHERE id = " + id)
+            .then(function(result) {
+                return DB.fetchAll(result);
+            });
+    };
+
+    self.getAttendanceRecord = function(studentId, subjectId) {
+        return DB.query("SELECT * FROM attendance WHERE studentId = " + studentId + " AND subjectId = " + subjectId)
+            .then(function(result) {
+                return DB.fetchAll(result);
+            });
+    }
+
+    self.update = function(id, data) {
+        return DB.query("UPDATE attendance SET firstName = '" + data.firstName + "', lastName = '" + data.lastName + "', gender = '" + data.gender + "',course = '" + data.course + "',yearLevelSection = '" + data.yearLevelSection + "',face = '" + data.face + "' WHERE id = " + id)
+            .then(function(result) {
+                return result;
+            });
+    };
+
+
+    return self;
+})
+
 .factory('Data', function() {
     //categories Enum
     var categories = [{

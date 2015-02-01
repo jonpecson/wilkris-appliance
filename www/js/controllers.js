@@ -2,15 +2,21 @@ angular.module('starter.controllers', [])
 
 // Status : INC
 .controller('AppCtrl', function($scope, $timeout, $rootScope, $state, Subjects, $timeout, DB, $window) {
-    $scope.subjects = [];
+    // $scope.subjects = [];
 
     $scope.$on('$ionicView.afterEnter', function() {
-        $timeout(function() {
+       getAllSubjects();
+    });
+
+    var getAllSubjects = function() {
             Subjects.getFirst(100).then(function(subjects) {
                 $scope.subjects = subjects;
             });
-        }, 1);
-    });
+    }
+    getAllSubjects();
+
+    
+
 
     $scope.checkAttendance = function(subject) {
         console.log(subject);
@@ -19,7 +25,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('CheckAttendanceCtrl', function($scope, $stateParams, Subjects, Students, $timeout, $filter) {
+.controller('CheckAttendanceCtrl', function($scope, $stateParams, Subjects, Students, $timeout, $filter, DB) {
     var id = $stateParams.stateParams;
     var studentIds = "";
     var subjectId="";
@@ -52,27 +58,23 @@ angular.module('starter.controllers', [])
         });
     }
 
-    $scope.markPresent = function(student) {
-        var status = "Present";
-        student.status = status;
+    
 
-        deleteStudentOnList(student);
+    var addAttendanceData = function(student, status) {
+        // subjectId, status
+        var studentId = student.id;
+        var currentDate = new Date();
 
-    }
+        var time = moment();
+        var timeStamp = new Date(time).getTime();
 
-    $scope.markAbsent = function(student) {
-        var status = "Absent";
-        student.status = status;
-
-        deleteStudentOnList(student);
-    }
-
-    $scope.markLate = function(student) {
-        var status = "Late";
-        student.status = status;
-
-        deleteStudentOnList(student);
-        
+        DB.insertAll('attendance', [{
+                    "id": timeStamp,
+                    "status": status,
+                    "subjectId": subjectId,
+                    "studentId": studentId,
+                    "dateTime": currentDate
+        }])
     }
 
     var deleteStudentOnList = function(student) {
@@ -80,6 +82,36 @@ angular.module('starter.controllers', [])
         $scope.students.splice(index,1);
     }
 
+    $scope.markPresent = function(student) {
+        var status = "Present";
+        student.status = status;
+
+        deleteStudentOnList(student);
+        addAttendanceData(student, status);
+
+    }
+
+
+    $scope.markAbsent = function(student) {
+        var status = "Absent";
+        student.status = status;
+
+        deleteStudentOnList(student);
+        addAttendanceData(student, status);
+    }
+
+    $scope.markLate = function(student) {
+        var status = "Late";
+        student.status = status;
+
+        deleteStudentOnList(student);
+        addAttendanceData(student, status);
+        
+    }
+
+    
+
+    
 
 })
 
