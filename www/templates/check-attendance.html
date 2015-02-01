@@ -1,0 +1,50 @@
+<ion-view view-title="{{subjectTitle}}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-qr-scanner" ng-click="cameraMode()"></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <ion-list>
+<!--             <ion-item class="item item-avatar item-divider home-divider">
+                <i class="icon ion-android-people card-side-icon"></i>
+                <h2 class="card-head">Students</h2>
+                <span class="badge badge-calm">{{students.length}}</span>
+            </ion-item> -->
+
+            <ion-item class="item-remove-animate item-avatar" ng-repeat="student in students" type="item-text-wrap">
+                <img ng-src="{{student.face}}">
+                <h2>{{student.fullName}}</h2>
+                <div>{{student.course}}</div>
+                <h6>
+                      {{student.gender}}
+                    </h6>
+                    <span 
+                    ng-class="{
+                    'badge badge-balanced': student.status === 'Present',
+                    'badge badge-assertive': student.status === 'Absent',
+                    'badge badge-energized': student.status === 'Late'
+                    }">
+                    {{student.status}}</span>
+                <ion-option-button class="button-balanced" ng-click="markPresent(student)">Present
+                </ion-option-button>
+
+                <ion-option-button class="button-assertive" ng-click="markAbsent(student)">Absent
+                </ion-option-button>
+
+                <ion-option-button class="button-energized" ng-click="markLate(student)">Late
+                </ion-option-button>
+
+                
+            </ion-item>
+
+        </ion-list>
+
+
+
+
+    </ion-content>
+
+
+</ion-view>

@@ -9,12 +9,12 @@
 
             <div class="col">
 
-                <div ng-if="!($index%2==0)" ng-repeat="subject in subjects">
+                <div ng-if="($index%2==0)" ng-repeat="subject in subjects">
 
-                    <div class="card topics-page-card">
+                    <div class="card topics-page-card" ng-click="checkAttendance(subject)">
 
                         <div>
-                            <img ng-src="img/{{subject.icon}}" class="topics-img">
+                            <img ng-src="img/{{subject.icon}}" class="topics-img" >
 
                             <div class="topic-name-topic">
                                 <p>{{subject.subjectName}}</p><i class="icon ion-arrow-right-b"></i>
@@ -29,9 +29,9 @@
 
             <div class="col">
 
-                <div ng-if="($index%2==0)" ng-repeat="subject in subjects">
+                <div ng-if="!($index%2==0)" ng-repeat="subject in subjects">
 
-                    <div class="card topics-page-card">
+                    <div class="card topics-page-card" ng-click="checkAttendance(subject)">
                         <div>
                             <img ng-src="img/{{subject.icon}}" class="topics-img">
                         </div>

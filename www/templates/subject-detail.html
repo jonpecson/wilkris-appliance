@@ -32,7 +32,7 @@ h3 {
                 <span class="input-label">Days
                     <button class="button button-icon icon ion-android-more-horizontal" ng-click="showPickDays()"></button>
                 </span>
-                <input type="text" placeholder="Mon, Wed, Fri" ng-model="newSubject.sDays"></input>
+                <input type="text" placeholder="Mon, Wed, Fri" ng-model="newSubject.selectedDays"></input>
                 
             </label>
 
@@ -74,30 +74,4 @@ h3 {
 
 </ion-view>
 
-<script id="pick-days-modal.html" type="text/ng-template">
-  <div class="modal">
 
-    <ion-header-bar class="bar bar-header bar-positive">
-        <button ng-click="hidePickDays()" class="button button-positive button-icon ion-android-arrow-back">
-        </button>
-        <h1 class="title">Pick Day(s)</h1>
-    </ion-header-bar>
-
-
-    <ion-content>
-        <ion-list>
-            <ion-checkbox ng-model="day.isChecked" ng-repeat="day in days">{{day.day}}
-                
-                <div ng-repeat="selectedDay in newSubject.selectedDays" ng-if="selectedDay ==day.day" ng-init="day.isChecked=true">
-                </div>
-            </ion-checkbox>
-            
-            <div ng-repeat="day in days" ng-if="day.isChecked" ng-init="updateDay(day.day)"></div>
-            <div ng-repeat="day in days" ng-if="!day.isChecked" ng-init="updateDay(day.day)"></div>
-
-        </ion-list>
-    </ion-content>
-
-</div>
-
-</script>

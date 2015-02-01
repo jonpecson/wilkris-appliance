@@ -3,40 +3,31 @@
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-android-menu "></button>
     </ion-nav-buttons>
-    
+
+    <ion-nav-buttons side="right">
+        <a class="button button-icon icon ion-android-person-add" href="#app/student-detail/0-create"></a>
+    </ion-nav-buttons>
+
     <ion-content class="has-header">
+        <ion-list>
 
-        <!-- <div ng-hide="user">
-          <button class="button button-small button-full button-assertive" 
-          ng-click="login('facebook')">You are not connected to the internet</button>
-        </div> -->
-
-        <!-- <div ng-show="user"> -->
-
-            <ion-list>
-
-                <ion-item class="item-remove-animate item-avatar" ng-repeat="item in students" type="item-text-wrap">
-                    <img ng-src="{{item.face}}">
-                    <h2>{{item.fullName}}</h2>
-                    <p>{{item.course}}</p>
-                    <h6>
-                      {{item.gender}}
+            <ion-item class="item-remove-animate item-avatar" ng-repeat="student in students" type="item-text-wrap" ng-click="viewStudent(student)">
+                <img ng-src="{{student.face}}">
+                <h2>{{student.firstName}} {{student.lastName}}</h2>
+                <p>{{student.course}} {{student.yearLevelSection}}</p>
+                <h6>
+                      {{student.gender}}
                     </h6>
-                </ion-item>
+                <ion-option-button class="button-balanced" ng-click="viewStudent(student)">View
+                </ion-option-button>
+                <ion-option-button class="button-positive" ng-click="editStudent(student)">Edit
+                </ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="deleteStudent(student)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
 
-            </ion-list>
-        <!-- </div> -->
+        </ion-list>
     </ion-content>
 
-   <!--  <div ng-show="user">
-        <ion-footer-bar class="bar bar-footer bar-frosted">
-             <label class="item-input-wrapper" style="background-color: #fff">
-                <input type="text" placeholder="New Message" ng-model="chat.message" isFocused style="background-color: #fff">
-            </label>
-
-                <button ng-click="sendChat(chat)" class="pull-right button button-positive"><i class="icon ion-android-send"></i></button>
-        </ion-footer-bar>
-    </div>
- -->
-    
 </ion-view>

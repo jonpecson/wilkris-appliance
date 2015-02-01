@@ -43,6 +43,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
     })
 
+    .state('app.check-attendance', {
+        url: "/check-attendance/:stateParams",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/check-attendance.html",
+                controller: 'CheckAttendanceCtrl'
+            }
+        }
+    })
+
+
+
     .state('app.browse', {
         url: "/browse",
         views: {
@@ -112,6 +124,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
     })
 
+    .state('app.student-detail', {
+        url: "/student-detail/:stateParams",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/student-detail.html",
+                controller: 'StudentDetailCtrl'
+            }
+        }
+    })
+
+    .state('app.student-info', {
+        url: "/student-info/:stateParams",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/student-info.html",
+                controller: 'StudentInfoCtrl'
+            }
+        }
+    })
+
+    
+
 
     .state('login', {
         url: "/login",
@@ -142,7 +176,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 })
 
 .constant('DB_CONFIG', {
-    name: 'AttendanceTrackerDbv1.0.1.beta.1.22',
+    name: 'AttendanceTrackerDbv1.0.1.beta.1.26',
     tables: {
         subjects: {
             id: 'integer primary key',
@@ -153,7 +187,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             categoryName:  'text',
             icon: 'text',
             fromTime: 'text',
-            toTime: 'text'
+            toTime: 'text',
+            studentIds : 'text'
+        },
+        students: {
+            id: 'integer primary key',
+            firstName: 'text',
+            lastName: 'text',
+            gender: 'text',
+            course: 'text',
+            yearLevelSection:  'text',
+            face: 'blob'
+        },
+        attendance: {
+            id: 'integer primary key',
+            subjectId: 'text',
+            studentId: 'text',
+            status: 'text',
+            dateTime:  'text'
         }
     }
 });

@@ -49,7 +49,9 @@ angular.module('starter.services', [])
             "categoryName": "Education",
             "icon": "education/education-thumb.png",
             "fromTime": "Thu Jan 01 2015 07:30:00 GMT+0800 (Taipei Standard Time)",
-            "toTime": "Thu Jan 01 2015 09:00:00 GMT+0800 (Taipei Standard Time)"
+            "toTime": "Thu Jan 01 2015 09:00:00 GMT+0800 (Taipei Standard Time)",
+            "studentIds" : "1, 2, 3"
+
         }, {
             "id": 1,
             "subjectName": "Acctng. 1",
@@ -59,7 +61,8 @@ angular.module('starter.services', [])
             "categoryName": "Business",
             "icon": "business/business-thumb.png",
             "fromTime": "Thu Jan 01 2015 07:30:00 GMT+0800 (Taipei Standard Time)",
-            "toTime": "Thu Jan 01 2015 09:00:00 GMT+0800 (Taipei Standard Time)"
+            "toTime": "Thu Jan 01 2015 09:00:00 GMT+0800 (Taipei Standard Time)",
+            "studentIds" : "1, 2, 3"
         }, {
             "id": 2,
             "subjectName": "IT 101",
@@ -69,7 +72,8 @@ angular.module('starter.services', [])
             "categoryName": "Technology",
             "icon": "tech/tech-thumb.png",
             "fromTime": "Thu Jan 01 2015 07:30:00 GMT+0800 (Taipei Standard Time)",
-            "toTime": "Thu Jan 01 2015 09:00:00 GMT+0800 (Taipei Standard Time)"
+            "toTime": "Thu Jan 01 2015 09:00:00 GMT+0800 (Taipei Standard Time)",
+            "studentIds" : "1, 2, 3"
         }, {
             "id": 3,
             "subjectName": "IT 102",
@@ -79,8 +83,75 @@ angular.module('starter.services', [])
             "categoryName": "Technology",
             "icon": "tech/tech-thumb.png",
             "fromTime": "Thu Jan 01 2015 07:30:00 GMT+0800 (Taipei Standard Time)",
-            "toTime": "Thu Jan 01 2015 09:00:00 GMT+0800 (Taipei Standard Time)"
+            "toTime": "Thu Jan 01 2015 09:00:00 GMT+0800 (Taipei Standard Time)",
+            "studentIds" : "1, 2, 3"
         }]);
+
+        self.insertAll('students',[{
+        id: '01',
+        firstName: 'John Anthony',
+        lastName: 'Pecson',
+        course: 'BSCS',
+        yearLevelSection : '4',
+        gender: 'Male',
+        face: 'img/faces/JP.jpg'
+    }, {
+        id: '02',
+        firstName: 'Joeven',
+        lastName: 'Tribunalo',
+        yearLevelSection : '4',
+        course: 'BSCS',
+        gender: 'Male',
+        face: 'img/faces/JT.jpg'
+    }, {
+        id: '03',
+        firstName: 'Shulamite',
+        lastName: 'Bandola',
+        yearLevelSection : '4',
+        course: 'BSCS',
+        gender: 'Female',
+        face: 'img/faces/SB.jpg'
+    }, {
+        id: '04',
+        firstName: 'Precious ',
+        lastName: 'Abejero',
+        course: 'BSCS',
+        yearLevelSection : '4',
+        gender: 'Female',
+        face: 'img/faces/PA.jpg'
+    }, {
+        id: '05',
+        firstName: 'Yam',
+        lastName: 'Tanjusay',
+        course: 'BSCS',
+        yearLevelSection : '4',
+        gender: 'Female',
+        face: 'img/faces/MT.jpg'
+    }, {
+        id: '06',
+        firstName: 'Jolly',
+        lastName: 'Tabujara',
+        course: 'BSCS',
+        yearLevelSection : '4',
+        gender: 'Female',
+        face: 'img/faces/JT.jpg'
+    }, {
+        id: '07',
+        firstName: 'Beth',
+        lastName: 'Gonzaga',
+        course: 'BSCS',
+        yearLevelSection : '4',
+        gender: 'Female',
+        face: 'img/faces/BG.jpg'
+    }, {
+        id: '08',
+        firstName: 'Gail',
+        lastName: 'Dearo',
+        course: 'BSCS',
+        yearLevelSection : '4',
+        gender: 'Female',
+        face: 'img/faces/GD.jpg'
+    }]);
 
 
 
@@ -156,6 +227,8 @@ angular.module('starter.services', [])
             });
     };
 
+
+
     self.getById = function(id) {
         return DB.query("SELECT * FROM subjects WHERE id = " + id)
             .then(function(result) {
@@ -163,8 +236,52 @@ angular.module('starter.services', [])
             });
     };
 
+    self.getByStudentId = function(id) {
+        return DB.query("SELECT * FROM subjects WHERE studentIds LIKE '%" + id + "%'")
+            .then(function(result) {
+                return DB.fetchAll(result);
+            });
+    };
+
+
+
     self.update = function(id, data) {
-        return DB.query("UPDATE subjects SET subjectName = '" + data.subjectName + "', desc = '" + data.desc + "', days = '" + data.sDays + "',location = '" + data.location + "',categoryName = '" + data.category.categoryName + "',icon = '" + data.category.icon + "',fromTime = '" + data.timeFrom + "',toTime = '" + data.timeTo + "' WHERE id = " + id)
+        return DB.query("UPDATE subjects SET subjectName = '" + data.subjectName + "', desc = '" + data.desc + "', days = '" + data.selectedDays + "',location = '" + data.location + "',categoryName = '" + data.category.categoryName + "',icon = '" + data.category.icon + "',fromTime = '" + data.timeFrom + "',toTime = '" + data.timeTo + "',studentIds = '" + data.selectedStudents +"' WHERE id = " + id)
+            .then(function(result) {
+                return result;
+            });
+    };
+
+
+    return self;
+})
+
+.factory('Students', function(DB) {
+    var self = this;
+
+    self.getFirst = function(number) {
+        return DB.query("SELECT * FROM students LIMIT ?", [number])
+            .then(function(result) {
+                return DB.fetchAll(result);
+            });
+    };
+
+    self.getById = function(id) {
+        return DB.query("SELECT * FROM students WHERE id = " + id)
+            .then(function(result) {
+                return DB.fetchAll(result);
+            });
+    };
+
+    self.getByIds = function(ids) {
+        return DB.query("SELECT * FROM students WHERE id IN (" + ids + ")")
+            .then(function(result) {
+                return DB.fetchAll(result);
+            });
+    };
+
+    self.update = function(id, data) {
+        return DB.query("UPDATE students SET firstName = '" + data.firstName + "', lastName = '" + data.lastName + "', gender = '" + data.gender + "',course = '" + data.course + "',yearLevelSection = '" + data.yearLevelSection + "',face = '" + data.face + "' WHERE id = " + id)
             .then(function(result) {
                 return result;
             });

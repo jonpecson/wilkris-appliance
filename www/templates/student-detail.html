@@ -1,0 +1,97 @@
+<style>
+input[placeholder] {
+    margin-left: 0px;
+    color: #181818;
+}
+textarea {
+    font-family: dosis-medium;
+    color: #181818;
+    font-size: 16px;
+}
+h3 {
+    font-family: dosis-medium;
+    color: #181818;
+    font-size: 16px;
+}
+</style>
+<ion-view view-title="New Student">
+
+    <ion-content>
+        <div class="list">
+
+            <div class="image-container" ng-click="takePicture()">
+                <img class="full-image" id="myImage" src="img/camera-en.svg">
+            </div>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">First Name</span>
+                <input type="text" placeholder="John" ng-model="newStudent.firstName">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Last Name</span>
+                <input type="text" placeholder="Smith" ng-model="newStudent.lastName">
+            </label>
+
+            <!-- <label class="item item-input item-stacked-label">
+                <span class="input-label">Gender</span>
+                <input type="text" placeholder="Male" ng-model="newStudent.gender">
+            </label> -->
+
+            <label class="item item-icon-right">
+                <select style="opacity:0; width:100%; position:absolute; z:index=100" ng-model="newStudent.gender" ng-options="gender for gender in genders">
+                </select>
+
+                <span class="input-label">Gender
+                    <button class="button button-icon icon ion-android-more-horizontal"></button>
+                </span>
+                <h3>{{newStudent.gender}}</h3>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Course</span>
+                <input type="text" placeholder="BSCS" ng-model="newStudent.course">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Year Level & Section</span>
+                <input type="text" placeholder="1 - A" ng-model="newStudent.yearLevelSection">
+            </label>
+
+
+        </div>
+        <button class="button button-block button-outline button-positive  icon-left ion-android-add" ng-click="addStudent()" ng-show="action=='create'">Add</button>
+        <button class="button button-block button-outline button-positive icon-left ion-checkmark" ng-click="saveStudent()" ng-show="action=='update'">Save</button>
+
+    </ion-content>
+
+
+</ion-view>
+
+<script id="pick-days-modal.html" type="text/ng-template">
+    <div class="modal">
+
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button ng-click="hidePickDays()" class="button button-positive button-icon ion-android-arrow-back">
+            </button>
+            <h1 class="title">Pick Day(s)</h1>
+        </ion-header-bar>
+
+
+        <ion-content>
+            <ion-list>
+                <ion-checkbox ng-model="day.isChecked" ng-repeat="day in days">{{day.day}}
+
+                    <div ng-repeat="selectedDay in newSubject.selectedDays" ng-if="selectedDay ==day.day" ng-init="day.isChecked=true">
+                    </div>
+                </ion-checkbox>
+
+                <div ng-repeat="day in days" ng-if="day.isChecked" ng-init="updateDay(day.day)"></div>
+                <div ng-repeat="day in days" ng-if="!day.isChecked" ng-init="updateDay(day.day)"></div>
+
+            </ion-list>
+        </ion-content>
+
+    </div>
+
+</script>

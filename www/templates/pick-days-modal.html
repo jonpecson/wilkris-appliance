@@ -1,32 +1,24 @@
-<div class="modal" ng-controller="AddSubjectCtrl">
+<div class="modal" controller="SubjectDetailCtrl">
 
-    <ion-header-bar class="bar bar-header bar-positive">
-        <button ng-click="hideModal()" class="button button-positive button-icon ion-android-arrow-back">
+     <ion-header-bar class="bar bar-header bar-positive">
+        <button ng-click="hidePickDays()" class="button button-positive button-icon ion-android-arrow-back">
         </button>
         <h1 class="title">Pick Day(s)</h1>
     </ion-header-bar>
 
 
     <ion-content>
-
         <ion-list>
-
             <ion-checkbox ng-model="day.isChecked" ng-repeat="day in days">{{day.day}}
-
-                <div ng-repeat="d in daysFromDB" ng-if="d==day.day" ng-init="day.isChecked=true">
+                
+                <div ng-repeat="selectedDay in locallySelectedDays" ng-if="selectedDay ==day.day" ng-init="day.isChecked=true">
                 </div>
-
             </ion-checkbox>
+            
+            <div ng-repeat="day in days" ng-if="day.isChecked" ng-init="updateDays(day.day)"></div>
+            <div ng-repeat="day in days" ng-if="!day.isChecked" ng-init="updateDays(day.day)"></div>
 
-
-
-            <div ng-repeat="d in days" ng-if="d.isChecked" ng-init="addDay(d.day)">{{d.day}}</div>
-
-            <div ng-repeat="d in days" ng-if="!d.isChecked" ng-init="removeDay($index)"></div>
         </ion-list>
-
-        <p>{{selectDays.join(',')}}</p>
-        <p>{{days | json}} </p>
     </ion-content>
 
 </div>

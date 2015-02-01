@@ -205,10 +205,8 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
 }
 
 /*Students*/
-.member {
-    padding: 10px;
-}
-.member .profile-circle {
+
+ .profile-circle {
     float: left;
     width: 55px;
     height: 55px;
@@ -216,17 +214,18 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
     
     border: 1px solid #ABABAB;
     border-radius: 100%;
-    margin: -8px 0 -10px -15px;
+    margin: -8px 0 -10px 1px;
 }
-.member .item-content {
+/*.member .item-content {
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 5px;
-}
-.member .profile-circle.admin {
+}*/
+ .profile-circle.admin {
     border-color: #167ffb;
+    padding-left: 15px;
 }
-.member .initials {
+ .initials {
     float: left;
     width: 55px;
     margin: 9px -55px;
@@ -239,17 +238,12 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
 .member-name {
     font-size: 1.0em;
     color: black;
-    padding-left: 15px;
+    padding-left: 10px;
 }
 .member-course {
     font-size: .8em;
     color: black;
-    padding-left: 15px;
-}
-.member-gender {
-    font-size: .9em;
-    color: black;
-    padding-left: 15px;
+    padding-left: 11px;
 }
 .member-name-position {
     left: 50px;
@@ -260,7 +254,7 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
     top: 40px;
 }
 
-.blur-dropshadow .member-name, .blur-dropshadow .accent, .blur-dropshadow .accent .button, .blur-dropshadow .item, .blur-dropshadow .initials, .blur-dropshadow .black, .blur-dropshadow .red, .blur-dropshadow .green, .blur-dropshadow .bar.bar-dark .title, .blur-dropshadow h1, .blur-dropshadow h2, .blur-dropshadow h3, .blur-dropshadow h4, .blur-dropshadow h5, .blur-dropshadow h6 {
+/*.blur-dropshadow .member-name, .blur-dropshadow .accent, .blur-dropshadow .accent .button, .blur-dropshadow .item, .blur-dropshadow .initials, .blur-dropshadow .black, .blur-dropshadow .red, .blur-dropshadow .green, .blur-dropshadow .bar.bar-dark .title, .blur-dropshadow h1, .blur-dropshadow h2, .blur-dropshadow h3, .blur-dropshadow h4, .blur-dropshadow h5, .blur-dropshadow h6 {
     color: rgba(0, 0, 0, 0) !important;
 }
 
@@ -317,11 +311,11 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
     -ms-flex: 0 0 85%;
     flex: 0 0 85%;
     max-width: 85%;
-}
+}*/
 
-.accent, .accent .button {
+/*.accent, .accent .button {
     color: #167ffb;
-}
+}*/
 
  .item-background {
     background-image: url(../img/list-item-bg-kleiner.png);
@@ -341,3 +335,24 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
  .expenses .item-content {
     padding-left: 0;
 }
+
+
+/*Student's face*/
+.image-container {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 0;
+
+  text-align: center;
+
+  background-color: rgba(128,128,128,0.75);
+}
+.image-container img {
+  width: 60%;
+  max-width: 100%;
+  max-height: 300px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 100%;
+}
+

@@ -1,0 +1,23 @@
+<div class="modal" controller="SubjectInfoCtrl">
+
+     <ion-header-bar class="bar bar-header bar-positive">
+        <button ng-click="hidePickStudents()" class="button button-positive button-icon ion-android-arrow-back">
+        </button>
+        <h1 class="title">Pick Student(s)</h1>
+    </ion-header-bar>
+
+
+    <ion-content>
+        <ion-list>
+            <ion-checkbox ng-model="student.isChecked" ng-repeat="student in studentList">{{student.fullName}}
+                
+                <div ng-repeat="selectedStudent in locallySelectedStudents" ng-if="selectedStudent ==student.id" ng-init="student.isChecked=true">
+                </div>
+            </ion-checkbox>
+            <div ng-repeat="student in studentList" ng-if="student.isChecked" ng-init="updateStudents(student.id)"></div>
+            <div ng-repeat="student in studentList" ng-if="!student.isChecked" ng-init="updateStudents(student.id)"></div>
+
+        </ion-list>
+    </ion-content>
+
+</div>

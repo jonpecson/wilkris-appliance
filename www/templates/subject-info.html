@@ -3,7 +3,7 @@
     <ion-nav-buttons side="right">
         <!-- <a class="button button-icon icon ion-android-create" href="#/app/subject-detail/{{id}}-update"></a> -->
         <!-- <a class="button button-icon icon ion-android-delete"></a> -->
-        <a class="button button-icon icon ion-android-person-add"></a>
+        <button class="button button-icon icon ion-android-person-add" ng-click="showPickStudents()"></button>
     </ion-nav-buttons>
 
     <ion-content>
@@ -30,11 +30,16 @@
                 </a>
             </div>
 
+            <ion-refresher on-refresh="doRefresh()" pulling-icon="ion-android-arrow-up"
+    on-refresh="doRefresh()">>
+                     
+            </ion-refresher>
+
             <ion-list>
                 <ion-item class="item item-avatar item-divider home-divider">
                     <i class="icon ion-android-people card-side-icon"></i>
                     <h2 class="card-head">Students</h2>
-                    <span class="badge badge-balanced">8</span>
+                    <span class="badge badge-calm">{{students.length}}</span>
                 </ion-item>
 
                 <ion-item class="item-remove-animate item-avatar" ng-repeat="student in students" type="item-text-wrap">
@@ -44,42 +49,52 @@
                     <h6>
                       {{student.gender}}
                     </h6>
+                    <ion-option-button class="button-positive" ng-click="share(item)">Edit
+                    </ion-option-button>
+                    <ion-option-button class="button-info" ng-click="edit(item)">
+                        Delete
+                    </ion-option-button>
                 </ion-item>
 
             </ion-list>
 
             <!-- <ion-list>
+
+                <ion-item class="item item-avatar item-divider home-divider">
+                    <i class="icon ion-android-people card-side-icon"></i>
+                    <h2 class="card-head">Students</h2>
+                    <span class="badge badge-calm">8</span>
+                </ion-item>
+
                 <div ng-repeat="student in students" class="member-container item-background expenses">
                     <ion-item class="member" item-type="a">
-                        <div class="row">
-                            <div class="col col-75">
-                                <div class="profile-circle admin"></div>
-                                <div class="initials">
-                                    {{student.firstName.charAt(0)}}{{student.lastName.charAt(0)}}
-                                </div>
-                                <span class="member-name member-name-position">
-                                    {{student.firstName}} {{student.lastName}}
-                                </span>
-                                <br>
-                                <span class="member-course">
-                                     {{student.course}}
-                                </span>
-                                <br />
-                                
-
-                            </div>
+                        <div class="profile-circle admin"></div>
+                        <div class="initials">
+                            {{student.firstName.charAt(0)}}{{student.lastName.charAt(0)}}
                         </div>
+                        <span class="member-name member-name-position">
+                                    {{student.firstName}} {{student.lastName}}
+
+                                </span>
+
+                        <br>
+                        <span class="member-course">
+                                     {{student.gender}} | {{student.course}} 
+                                </span>
+                        <br />
+
+                        <ion-option-button class="button-positive" ng-click="share(item)">
+                            Share
+                        </ion-option-button>
+                        <ion-option-button class="button-info" ng-click="edit(item)">
+                            Edit
+                        </ion-option-button>
+
+
                     </ion-item>
                 </div>
 
-            </ion-list>
-            <div class="row accent">
-                <div class="col col-75">
-                    <h2>
-                        Change me
-                    </h2>
-                </div>
-            </div> -->
+            </ion-list> -->
 
         </ion-content>
 
