@@ -55,7 +55,7 @@ ion-header-bar h1, ion-nav-bar h1 {
     background-color: #4CAF50;
     background-image: none;
     color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .26)
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, .26)*/
 }
 .bar.bar-assertive {
     border-color: #F14B2B;

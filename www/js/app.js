@@ -43,34 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
     })
 
-    .state('app.check-attendance', {
-        url: "/check-attendance/:stateParams",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/check-attendance.html",
-                controller: 'CheckAttendanceCtrl'
-            }
-        }
-    })
 
-    .state('app.browse', {
-        url: "/browse",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/browse.html"
-            }
-        }
-    })
-
-    .state('app.students', {
-        url: "/students",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/students.html",
-                controller: 'StudentsCtrl'
-            }
-        }
-    })
 
     .state('app.products', {
         url: "/products",
@@ -81,6 +54,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
+
+    .state('app.categories', {
+        url: "/categories",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/categories.html",
+                controller: 'CategoryCtrl'
+            }
+        }
+    })
+
+
+    .state('app.brands', {
+        url: "/brands",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/brands.html",
+                controller: 'BrandsCtrl'
+            }
+        }
+    })
+
 
     .state('app.feedback', {
         url: "/feedback",
@@ -102,59 +97,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
     })
 
-    .state('app.subject-detail', {
-        url: "/subject-detail/:stateParams",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/subject-detail.html",
-                controller: 'SubjectDetailCtrl'
-            }
-        }
-    })
-
-    .state('app.subject-info', {
-        url: "/subject-info/:stateParams",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/subject-info.html",
-                controller: 'SubjectInfoCtrl'
-            }
-        }
-    })
-
-    .state('app.student-detail', {
-        url: "/student-detail/:stateParams",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/student-detail.html",
-                controller: 'StudentDetailCtrl'
-            }
-        }
-    })
-
-    .state('app.student-info', {
-        url: "/student-info/:stateParams",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/student-info.html",
-                controller: 'StudentInfoCtrl'
-            }
-        }
-    })
-
-    .state('app.attendance-info', {
-        url: "/attendance-info/:stateParams",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/attendance-info.html",
-                controller: 'AttendanceInfoCtrl'
-            }
-        }
-    })
-
-    
-
-
     .state('login', {
         url: "/login",
         templateUrl: "templates/login.html",
@@ -173,9 +115,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     };
 }])
 
-.filter('time',function($filter){
+.filter('time', function($filter) {
     return function(input) {
-        if(input==null) {return "";}
+        if (input == null) {
+            return "";
+        }
 
         var _date = $filter('date')(new Date(input), 'HH:mm a');
 
@@ -192,11 +136,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             desc: 'text',
             days: 'text',
             location: 'text',
-            categoryName:  'text',
+            categoryName: 'text',
             icon: 'text',
             fromTime: 'text',
             toTime: 'text',
-            studentIds : 'text'
+            studentIds: 'text'
         },
         students: {
             id: 'integer primary key',
@@ -204,7 +148,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             lastName: 'text',
             gender: 'text',
             course: 'text',
-            yearLevelSection:  'text',
+            yearLevelSection: 'text',
             face: 'blob'
         },
         attendance: {
@@ -212,7 +156,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             subjectId: 'integer',
             studentId: 'integer',
             status: 'text',
-            dateTime:  'text'
+            dateTime: 'text'
         }
     }
 });
