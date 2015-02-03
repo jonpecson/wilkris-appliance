@@ -11,17 +11,16 @@
 
 
             <ion-header-bar class="side-bar-header" >
-                <div class="item item-avatar profile-preview" ng-show="user">
-                    <!-- <img class="profile-picture" ng-src="img/ionic.png"> -->
+                <!-- <div class="item item-avatar profile-preview" ng-show="user">
                     <img ng-src="{{user.facebook.cachedUserProfile.picture.data.url}}">
                     <h2>{{ user.facebook.displayName }}</h2>
                     <p><a class="link" ng-click="logout()" href menu-close>Logout</a></p>
-                </div>
+                </div> -->
 
                 <div class="item item-avatar profile-preview" ng-hide="user">
                     <!-- <img class="profile-picture" ng-src="img/ionic.png"> -->
                     <img ng-src="img/ionic.png">
-                    <h2>KCC Attendance Tracker</h2>
+                    <h2>Wilkris Appliance</h2>
                     <p><a class="link" ng-click="login()" href="#/login" menu-close>Login</a></p>
                 </div>
 
@@ -37,16 +36,22 @@
                   <span class="side-menu-text">Home</span>
                 </ion-item>
 
-                <ion-item nav-clear menu-close href="#/app/subjects">
+                <ion-item nav-clear menu-close href="#/app/products">
                   <i class="icon ion-ios-list side-menu-icon"></i>
-                  <span class="side-menu-text">Subjects</span>
+                  <span class="side-menu-text">Products</span>
                 </ion-item>
 
                 <ion-item nav-clear menu-close href="#/app/students">
-                  <i class="icon ion-android-people side-menu-icon"></i>
-                  <span class="side-menu-text">Students</span>
+                  <i class="icon ion-android-list side-menu-icon"></i>
+                  <span class="side-menu-text">Categories</span>
                 </ion-item>
 
+                <ion-item nav-clear menu-close href="#/app/students">
+                  <i class="icon ion-filing side-menu-icon"></i>
+                  <span class="side-menu-text">Brands</span>
+                </ion-item>
+
+                
                 <br>
 
                 <ion-item nav-clear menu-close href="#/app/feedback">

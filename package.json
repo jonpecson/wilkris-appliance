@@ -1,7 +1,7 @@
 {
-  "name": "attendify.v1",
+  "name": "Wilkris",
   "version": "1.0.0",
-  "description": "Attendify.v1: An Ionic project",
+  "description": "Wilkris: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",

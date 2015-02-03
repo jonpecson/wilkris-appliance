@@ -52,7 +52,7 @@ ion-header-bar h1, ion-nav-bar h1 {
 }
 .bar.bar-positive {
     border-color: transparent;
-    background-color: #2196F3;
+    background-color: #4CAF50;
     background-image: none;
     color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .26)
@@ -87,10 +87,10 @@ ion-header-bar h1, ion-nav-bar h1 {
     margin-top: -14px
 }
 .popup-head-icon {
-    color: #2196F3!important;
+    color: #4CAF50!important;
     font-size: 35px!important;
     background: #fff!important;
-    border: 5px solid #2196F3!important;
+    border: 5px solid #4CAF50!important;
     padding: 12px!important;
     border-radius: 50%!important;
     width: 75px!important;
@@ -101,10 +101,10 @@ ion-header-bar h1, ion-nav-bar h1 {
 }
 .buzz-logo {
     font-family: dosis-extrabold;
-    color: #2196F3!important;
+    color: #4CAF50!important;
     font-size: 35px!important;
     background: #fff!important;
-    border: 5px solid #2196F3!important;
+    border: 5px solid #4CAF50!important;
     padding: 10px!important;
     border-radius: 50%!important;
     width: 75px!important;
@@ -622,16 +622,16 @@ ul.green-won li div i {
     color: #9C0
 }
 .res-calm {
-    border: 1px solid #2196F3;
-    color: #2196F3
+    border: 1px solid #4CAF50;
+    color: #4CAF50
 }
 .res-energized {
     border: 1px solid #03A9F4;
     color: #03A9F4
 }
 .res-assertive {
-    border: 1px solid #2196F3;
-    color: #2196F3
+    border: 1px solid #4CAF50;
+    color: #4CAF50
 }
 .res-tab {
     height: 40px;
@@ -771,7 +771,7 @@ div.winner-img {
     font-family: dosis-extrabold;
     width: 75%;
     position: relative;
-    background: #2196F3;
+    background: #4CAF50;
     color: #fff;
     text-align: center;
     padding: 21px;
@@ -828,7 +828,7 @@ div.winner-img {
 /*    text-align: center*/
 }
 .slider-pager {
-    /*border: 1px solid #2196F3;*/
+    /*border: 1px solid #4CAF50;*/
     /*border-radius: 7px;*/
     padding-top: 5px;
     height: 15px;
@@ -839,7 +839,7 @@ div.winner-img {
     margin-left: 0%
 }
 .slider-pager .slider-pager-page {
-/*    color: #2196F3*/
+/*    color: #4CAF50*/
     color: #f1f1f1
 
 }
@@ -881,7 +881,7 @@ ion-slide h3 {
     color: #fff;
     font-size: 21px;
     font-family: dosis;
-    background-color: #2196F3
+    background-color: #4CAF50
 }
 .swipe-card .image img {
     border-radius: 0 0 4px 4px;
@@ -889,7 +889,7 @@ ion-slide h3 {
 }
 #start-card {
     color: #fff;
-    background-color: #2196F3;
+    background-color: #4CAF50;
     width: 300px;
     line-height: 300px;
     word-wrap: break-word;
@@ -1180,11 +1180,11 @@ i.thumb {
     height: 75px!important
 }
 .tabs-striped.tabs-background-positive .tabs {
-    background-color: #2196F3;
+    background-color: #4CAF50;
     border-color: transparent
 }
 .blue-color {
-    color: #2196F3!important
+    color: #4CAF50!important
 }
 .dark-color {
     color: #313131!important
@@ -1418,7 +1418,7 @@ div.has-border {
     background-color: rgba(255, 255, 255, 1)
 }
 .help-cards {
-    background: #2196F3;
+    background: #4CAF50;
     height: 175px;
     padding-top: 34px;
     background: url(../img/tech01.jpg);
@@ -1473,7 +1473,7 @@ div.topic-name-topic i {
 }
 .question {
     min-height: 150px;
-    background: #2196F3;
+    background: #4CAF50;
     color: #fff;
     font-family: dosis;
     font-size: 16px;
@@ -1535,7 +1535,7 @@ div.topic-name-topic i {
     margin-top: -1px
 }
 .tabs-indigo {
-    background-color: #2196F3
+    background-color: #4CAF50
 }
 .start-match-text {
     font-family: dosis-medium;
@@ -1612,10 +1612,10 @@ div.topic-name-topic i {
     background-color: #f4f4f4!important
 }
 .tabs-top>.tabs, .tabs.tabs-top {
-    top: 56px
+    /*top: 56px*/
 }
 .has-tabs-top {
-    top: 107px
+    /*top: 107px*/
 }
 .hasbg {
     background-image: url(../img/start-bg.png)!important;
@@ -1632,7 +1632,7 @@ div.topic-name-topic i {
 }
 .content-sug-icon {
     margin-left: -3px!important;
-    color: #2196F3
+    color: #4CAF50
 }
 .extra-margin-card {
     margin: 18px 30px!important;
@@ -1777,7 +1777,7 @@ div.topic-name-topic i {
 }
 @keyframes colors {
     0% {
-        stroke: #2196F3
+        stroke: #4CAF50
     }
     25% {
         stroke: #4285F4
@@ -1794,7 +1794,7 @@ div.topic-name-topic i {
 }
 @-webkit-keyframes colors {
     0% {
-        stroke: #2196F3
+        stroke: #4CAF50
     }
     25% {
         stroke: #4285F4

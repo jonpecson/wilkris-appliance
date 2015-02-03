@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'tc.chartjs'])
 
 .run(function($ionicPlatform, DB) {
     $ionicPlatform.ready(function() {
@@ -53,8 +53,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
     })
 
-
-
     .state('app.browse', {
         url: "/browse",
         views: {
@@ -74,12 +72,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
     })
 
-    .state('app.subjects', {
-        url: "/subjects",
+    .state('app.products', {
+        url: "/products",
         views: {
             'menuContent': {
-                templateUrl: "templates/subjects.html",
-                controller: 'SubjectsCtrl'
+                templateUrl: "templates/products.html",
+                controller: 'ProductsCtrl'
             }
         }
     })
@@ -140,6 +138,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             'menuContent': {
                 templateUrl: "templates/student-info.html",
                 controller: 'StudentInfoCtrl'
+            }
+        }
+    })
+
+    .state('app.attendance-info', {
+        url: "/attendance-info/:stateParams",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/attendance-info.html",
+                controller: 'AttendanceInfoCtrl'
             }
         }
     })

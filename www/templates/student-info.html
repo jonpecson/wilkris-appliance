@@ -23,13 +23,14 @@
 
             <ion-list>
                 <ion-item class="item item-avatar item-divider home-divider">
-                    <i class="icon ion-android-people card-side-icon"></i>
+                    <i class="icon ion-ios-list card-side-icon"></i>
                     <h2 class="card-head">Subjects</h2>
                     <span class="badge badge-calm">{{subjects.length}}</span>
                 </ion-item>
 
-                <ion-item class="item-remove-animate item-avatar" ng-repeat="subject in subjects" type="item-text-wrap">
-                    <img ng-src="img/{{subject.icon}}">
+                <ion-item class="item-remove-animate item-icon-left" ng-repeat="subject in subjects" type="item-text-wrap" ng-click="getAttendanceInfo(subject)">
+                    <!-- <img ng-src="img/{{subject.icon}}"> -->
+                    <i class="icon ion-android-document item-grey"></i>
                     <h2>{{subject.subjectName}}</h2>
                     <div>{{subject.desc}}</div>
                 </ion-item>

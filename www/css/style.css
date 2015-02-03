@@ -49,7 +49,7 @@ h6 {
 
 .profile-preview {
     background-color:#3F3F3F;
-    background: url(../img/side07.png);
+    background: url(../img/side.png);
     background-size: cover;
     width: 115%
 }
@@ -150,7 +150,7 @@ h6 {
   /*width: 100%; */
 width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
 
-      background-color: purple;
+      background-color: white;
 }
 .scroll { height: 100% }
 
@@ -356,3 +356,27 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
   border-radius: 100%;
 }
 
+/*Chart's legend*/
+.tc-chart-js-legend {
+  list-style-type: none;
+  padding-left: 0px;
+  display: table;   /* Allow the centering to work */
+  margin: 0 auto;
+
+}
+.tc-chart-js-legend li {
+  display: block;
+  float: left;
+  /*clear:both;*/
+  padding:10px;
+  display: inline;
+
+}
+.tc-chart-js-legend li span {
+  width:20px;
+  height:20px;
+  display:absolute;
+  float:left;
+  margin-right:10px;
+  border-radius: 50%;
+}

@@ -5,17 +5,73 @@ angular.module('starter.controllers', [])
     // $scope.subjects = [];
 
     $scope.$on('$ionicView.afterEnter', function() {
-       getAllSubjects();
+        getAllSubjects();
     });
 
+    // Chart.js Data
+    $scope.data = [{
+        value: 300,
+        color: '#00C853',
+        highlight: '#01E472',
+        label: 'Present'
+    }, {
+        value: 50,
+        color: '#F44336',
+        highlight: '#EF9A9A',
+        label: 'Absent'
+    }, {
+        value: 100,
+        color: '#FBC02D',
+        highlight: '#FFEE58',
+        label: 'Late'
+    }];
+
+    // Chart.js Options
+    $scope.options = {
+
+        // Sets the chart to be responsive
+        responsive: true,
+
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+
+        //String - The colour of each segment stroke
+        segmentStrokeColor: '#fff',
+
+        //Number - The width of each segment stroke
+        segmentStrokeWidth: 2,
+
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 0, // This is 0 for Pie charts
+
+        //Number - Amount of animation steps
+        animationSteps: 100,
+
+        //String - Animation easing effect
+        animationEasing: 'easeOutBounce',
+
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: true,
+
+        //Boolean - Whether we animate scaling the Doughnut from the centre
+        animateScale: false,
+
+        //String - A legend template
+        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+
+    };
+
+
+
+
     var getAllSubjects = function() {
-            Subjects.getFirst(100).then(function(subjects) {
-                $scope.subjects = subjects;
-            });
+        Subjects.getFirst(100).then(function(subjects) {
+            $scope.subjects = subjects;
+        });
     }
     getAllSubjects();
 
-    
+
 
 
     $scope.checkAttendance = function(subject) {
@@ -28,7 +84,7 @@ angular.module('starter.controllers', [])
 .controller('CheckAttendanceCtrl', function($scope, $stateParams, Subjects, Students, $timeout, $filter, DB) {
     var id = $stateParams.stateParams;
     var studentIds = "";
-    var subjectId="";
+    var subjectId = "";
 
     $scope.students = [];
 
@@ -40,25 +96,25 @@ angular.module('starter.controllers', [])
             getAllStudents(studentIds);
         });
 
-        
+
     }, 1);
 
-    var getAllStudents = function (ids) {
+    var getAllStudents = function(ids) {
         Students.getByIds(ids).then(function(students) {
             for (var key in students) {
-                    $scope.students.push({
-                        id: students[key].id,
-                        face : students[key].face,
-                        fullName: students[key].firstName + ' ' + students[key].lastName,
-                        course : students[key].course + ' ' +students[key].yearLevelSection,
-                        gender : students[key].gender,
-                        status: ''
-                    });
-                };
+                $scope.students.push({
+                    id: students[key].id,
+                    face: students[key].face,
+                    fullName: students[key].firstName + ' ' + students[key].lastName,
+                    course: students[key].course + ' ' + students[key].yearLevelSection,
+                    gender: students[key].gender,
+                    status: ''
+                });
+            };
         });
     }
 
-    
+
 
     var addAttendanceData = function(student, status) {
         // subjectId, status
@@ -69,17 +125,17 @@ angular.module('starter.controllers', [])
         var timeStamp = new Date(time).getTime();
 
         DB.insertAll('attendance', [{
-                    "id": timeStamp,
-                    "status": status,
-                    "subjectId": subjectId,
-                    "studentId": studentId,
-                    "dateTime": currentDate
+            "id": timeStamp,
+            "status": status,
+            "subjectId": subjectId,
+            "studentId": studentId,
+            "dateTime": currentDate
         }])
     }
 
     var deleteStudentOnList = function(student) {
         var index = $scope.students.indexOf(student)
-        $scope.students.splice(index,1);
+        $scope.students.splice(index, 1);
     }
 
     $scope.markPresent = function(student) {
@@ -106,17 +162,72 @@ angular.module('starter.controllers', [])
 
         deleteStudentOnList(student);
         addAttendanceData(student, status);
-        
+
     }
-
-    
-
-    
 
 })
 
+.controller('AttendanceInfoCtrl', function($scope, $stateParams, Attendance, $filter, Students) {
+    var stateParamsArray = $stateParams.stateParams.split('-');
+
+    var studentId = stateParamsArray[0];
+    var subjectId = stateParamsArray[1];
+    $scope.subjectTitle = stateParamsArray[2];
+    var attendanceList = [];
+
+    Students.getById(studentId).then(function(student) {
+        $scope.data = student[0];
+        $scope.student = $scope.data;
+    });
+
+    Attendance.getAttendanceRecord(studentId, subjectId).then(function(attendance) {
+        $scope.attendanceList = attendance;
+        console.log($scope.attendanceList);
+        $scope.presentCount = $filter('filter')($scope.attendanceList, {
+            status: 'Present'
+        });
+        $scope.absentCount = $filter('filter')($scope.attendanceList, {
+            status: 'Absent'
+        });
+        $scope.lateCount = $filter('filter')($scope.attendanceList, {
+            status: 'Late'
+        });
+
+        // Chart.js Data
+        $scope.data = [{
+            value: $scope.presentCount.length,
+            color: '#00C853',
+            highlight: '#01E472',
+            label: 'Present'
+        }, {
+            value: $scope.absentCount.length,
+            color: '#F44336',
+            highlight: '#EF9A9A',
+            label: 'Absent'
+        }, {
+            value: $scope.lateCount.length,
+            color: '#FBC02D',
+            highlight: '#FFEE58',
+            label: 'Late'
+        }];
+    });
+
+
+
+
+    $scope.getDate = function(dateVal) {
+        var d = moment(dateVal).format('MMM D, YYYY');
+        return d;
+    }
+
+    $scope.getTime = function(dateVal) {
+        var t = moment(dateVal).format('h:mm A');
+        return t;
+    }
+})
+
 // Status : On test
-.controller("SubjectsCtrl", function($scope, Subjects, $timeout, DB, $window) {
+.controller("ProductsCtrl", function($scope, Subjects, $timeout, DB, $window) {
     $scope.subjects = [];
 
     $scope.$on('$ionicView.afterEnter', function() {
@@ -255,7 +366,7 @@ angular.module('starter.controllers', [])
 })
 
 // Status : Currently working
-.controller("SubjectInfoCtrl", function($scope, $stateParams, Subjects, $ionicModal, Students, $timeout, $filter) {
+.controller("SubjectInfoCtrl", function($scope, $stateParams, Subjects, $ionicModal, Students, $timeout, $filter, $window) {
     $scope.id = $stateParams.stateParams;
 
     // 1. retrive subject
@@ -280,13 +391,10 @@ angular.module('starter.controllers', [])
                     // 2. retrieve students belong to the subjects
                     var studentIds = $scope.subject.studentIds;
                     $scope.refreshStudentList(studentIds);
-
-                     
-
                 });
             }, 1);
         }
-        // 1. retrieve subjects info
+        // 1. retrieve subjects info of a student
     $scope.refreshSubjectInfo();
 
     // 2. retrieve students belong to the subjects
@@ -355,6 +463,16 @@ angular.module('starter.controllers', [])
                 $scope.locallySelectedStudents.push($scope.studentList[i].id);
             }
         };
+    }
+
+    $scope.getAttendanceInfo = function(student) {
+        var studentId = student.id;
+        // var subjectId = $scope.subject.id;
+        // // var subjectId = subject.id;
+
+        // console.log(studentId + ' ' + subjectId);
+
+        $window.location = '#/app/attendance-info/' + studentId + '-' + $scope.subject.id + '-' + $scope.subject.subjectName;
     }
 
 })
@@ -484,9 +602,8 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('StudentInfoCtrl', function($scope, $stateParams, Students, Subjects) {
+.controller('StudentInfoCtrl', function($scope, $stateParams, Students, Subjects, $window) {
     $scope.id = $stateParams.stateParams;
-    console.log($scope.id);
 
     Students.getById($scope.id).then(function(student) {
         $scope.data = student[0];
@@ -494,9 +611,17 @@ angular.module('starter.controllers', [])
     });
 
     Subjects.getByStudentId($scope.id).then(function(subjects) {
-        console.log(subjects);
         $scope.subjects = subjects;
     });
+
+    $scope.getAttendanceInfo = function(subject) {
+        var studentId = $scope.id;
+        // var subjectId = subject.id;
+
+        console.log(studentId + ' ' + subject.id);
+
+        $window.location = '#/app/attendance-info/' + studentId + '-' + subject.id + '-' + subject.subjectName;
+    }
 
 
 })

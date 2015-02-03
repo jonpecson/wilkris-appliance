@@ -1,0 +1,44 @@
+<ion-view view-title="">
+    <ion-content>
+
+    	<div class="list card text-center">
+                <div class="item item-image">
+                    <div class="help-cards">
+                        <img id="profile-image" class="circle" src="{{student.face}}">
+                    </div>
+                </div>
+                <a class="item card-main-text item-text-wrap">
+                    <h3 class="help-header">{{student.firstName}} {{student.lastName}}</h3>
+                    <p class="help-explain">{{student.course}} {{student.yearLevelSection}}</p>
+                    <p class="help-explain">{{student.gender}} </p>
+                </a>
+            </div>
+
+    	<div class="list card text-center">
+    	<br>
+    	<p class="text-center" ng-if="attendanceList.length > 0">{{subjectTitle}}</p>
+    	<p class="text-center" ng-if="attendanceList.length == 0">Sorry, no attendance data yet.</p>
+        <canvas tc-chartjs-pie chart-options="options" chart-data="data" auto-legend ng-if="attendanceList.length > 0"></canvas>
+        </div>
+	
+
+        <ion-list>
+            <ion-item ng-repeat="attendance in attendanceList" type="item-text-wrap" class="item item-icon-left">
+            <i class="icon ion-clock item-grey"></i>
+                 {{getTime(attendance.dateTime)}}
+                <h6>{{getDate(attendance.dateTime)}}</h6>
+    		<div></div>
+
+                    <span 
+                    ng-class="{
+                    'badge badge-balanced': attendance.status === 'Present',
+                    'badge badge-assertive': attendance.status === 'Absent',
+                    'badge badge-energized': attendance.status === 'Late'
+                    }">
+                    {{attendance.status}}</span>
+
+                
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
