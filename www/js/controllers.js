@@ -1,105 +1,119 @@
 angular.module('starter.controllers', [])
 
 // Status : INC
-.controller('AppCtrl', function($scope, $timeout, $rootScope, $state, Subjects, $timeout, DB, $window) {
+.controller('AppCtrl', function($scope, $timeout, $rootScope, $state, $timeout, DB, $window) {
     // $scope.subjects = [];
 
     $scope.$on('$ionicView.afterEnter', function() {
-        getAllSubjects();
+        // getAllSubjects();
     });
-
-    // Chart.js Data
-    $scope.data = [{
-        value: 300,
-        color: '#00C853',
-        highlight: '#01E472',
-        label: 'Present'
-    }, {
-        value: 50,
-        color: '#F44336',
-        highlight: '#EF9A9A',
-        label: 'Absent'
-    }, {
-        value: 100,
-        color: '#FBC02D',
-        highlight: '#FFEE58',
-        label: 'Late'
-    }];
-
-    // Chart.js Options
-    $scope.options = {
-
-        // Sets the chart to be responsive
-        responsive: true,
-
-        //Boolean - Whether we should show a stroke on each segment
-        segmentShowStroke: true,
-
-        //String - The colour of each segment stroke
-        segmentStrokeColor: '#fff',
-
-        //Number - The width of each segment stroke
-        segmentStrokeWidth: 2,
-
-        //Number - The percentage of the chart that we cut out of the middle
-        percentageInnerCutout: 0, // This is 0 for Pie charts
-
-        //Number - Amount of animation steps
-        animationSteps: 100,
-
-        //String - Animation easing effect
-        animationEasing: 'easeOutBounce',
-
-        //Boolean - Whether we animate the rotation of the Doughnut
-        animateRotate: true,
-
-        //Boolean - Whether we animate scaling the Doughnut from the centre
-        animateScale: false,
-
-        //String - A legend template
-        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-
-    };
-
-
-
-
-    var getAllSubjects = function() {
-        Subjects.getFirst(100).then(function(subjects) {
-            $scope.subjects = subjects;
-        });
-    }
-    getAllSubjects();
-
-
-
-
-    $scope.checkAttendance = function(subject) {
-        console.log(subject);
-        $window.location = '#/app/check-attendance/' + subject.id;
-
-    }
 })
-
-
 
 
 // Status : On test
-.controller("ProductsCtrl", function($scope) {
-  $scope.products = [];
+.controller("ProductsCtrl", function($scope, Products, $window) {
+    $scope.products = [];
+    console.log("Hey");
+
+    var getAllProducts = function() {
+        console.log("Hey");
+        Products.getFirst(100).then(function(products) {
+            $scope.products = products;
+            console.log($scope.products);
+
+        });
+    }
+    getAllProducts();
+
+    $scope.$on('$ionicView.afterEnter', function() {
+        getAllProducts();
+        console.log($scope.products);
+    });
+    $scope.viewProduct = function(p) {
+        console.log("Product detail");
+        $window.location = "#/app/product-detail/" + p.id;
+
+    }
+
+})
+
+.controller("ProductCtrl", function($scope, $cordovaCamera, DB, Data, $window, action) {
+    console.log(action);
+    $scope.newProduct = {};
+    $scope.temp = {};
+    $scope.isFeatured = {
+        text: "Featured",
+        checked: true
+    };
+
+
+    $scope.brands = Data.getAllBrands();
+    $scope.categories = Data.getAllCategories();
+
+
+
+
+    $scope.takePicture = function() {
+        var options = {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            // find the element with id myImage 
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+
+            $scope.newProduct.image = "data:image/jpeg;base64," + imageData;
+            console.log($scope.face);
+
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+    }
+
+
+    $scope.saveProduct = function() {
+
+        var time = moment();
+        var timeStamp = new Date(time).getTime();
+        $scope.newProduct.id = timeStamp;
+        $scope.newProduct.featured = Number($scope.isFeatured.checked)
+        $scope.newProduct.brand = $scope.temp.brand.brandName;
+        $scope.newProduct.category = $scope.temp.category.categoryName;
+        console.log(Number($scope.isFeatured.checked));
+        DB.insertAll('products', [$scope.newProduct]);
+        $window.location = "#/app/products";
+
+
+    }
+
+})
+
+.controller("ProductDetailCtrl", function($scope, $stateParams, Products) {
+    var id = $stateParams.productId;
+
+    Products.getById(id).then(function(product) {
+        $scope.product = product[0];
+        // get the image reference
+        var image = document.getElementById('myImage');
+        // assign product image
+        image.src = $scope.product.image;
+    });
+})
+
+.controller('SearchCtrl', function($scope) {
+    $scope.products = [];
 })
 
 
-.controller('CategoryCtrl', function($scope) {
-    $scope.categories = [];
-})
-
-.controller('BrandsCtrl', function($scope) {
-    $scope.brands = [];
-
-})
-
-    
 .controller("FeedbackCtrl", function($scope) {
     $scope.submit = function() {
         $scope.feedback = {};

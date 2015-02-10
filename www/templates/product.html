@@ -1,0 +1,151 @@
+<style>
+input[placeholder] {
+    margin-left: 0px;
+    color: #181818;
+}
+textarea {
+    font-family: dosis-medium;
+    color: #181818;
+    font-size: 16px;
+}
+h3 {
+    font-family: dosis-medium;
+    color: #181818;
+    font-size: 16px;
+}
+</style>
+<ion-view view-title="New Student">
+
+    <ion-content>
+        <div class="list">
+            <form name="myForm">
+                <div class="image-container" ng-click="takePicture()">
+                    <img class="full-image" id="myImage" src="img/camera-en.svg">
+                </div>
+
+                <ion-toggle ng-model="isFeatured.checked" toggle-class="toggle-balanced">Featured</ion-toggle>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Model  </span>
+                    <input type="text" placeholder="eg. GAV3SAMRBS " ng-model="newProduct.model" required>
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Description</span>
+                    <textarea placeholder="eg. color: White" ng-model="newProduct.desc"> </textarea>
+                </label>
+
+                <!-- <label class="item item-input item-stacked-label">
+                <span class="input-label">Gender</span>
+                <input type="text" placeholder="Male" ng-model="newStudent.gender">
+            </label> -->
+
+                <label class="item item-icon-right">
+                    <select style="opacity:0; width:100%; position:absolute; z:index=100" ng-model="temp.category" ng-options="category.categoryName for category in categories" required>
+                    </select>
+
+                    <span class="input-label">Category
+                    <button class="button button-icon icon ion-android-more-horizontal"></button>
+                </span>
+                    <p style="font-family: dosis-medium;color: #b8b8b8;font-size: 16px" ng-show="!temp.category">eg. Ref</p>
+                    <h3>{{temp.category.categoryName}}</h3>
+                </label>
+
+                <label class="item item-icon-right">
+                    <select style="opacity:0; width:100%; position:absolute; z:index=100" ng-model="temp.brand" ng-options="brand.brandName for brand in brands" required>
+                    </select>
+
+                    <span class="input-label">Brand
+                    <button class="button button-icon icon ion-android-more-horizontal"></button>
+                </span>
+                    <p style="font-family: dosis-medium;color: #b8b8b8;font-size: 16px" ng-show="!temp.brand">eg. GE</p>
+                    <h3>{{temp.brand.brandName}}</h3>
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">COD</span>
+                    <input type="text" placeholder="eg. 12575" ng-model="newProduct.cod">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Down Payment</span>
+                    <input type="text" placeholder="eg. 2794" ng-model="newProduct.down">
+                </label>
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">3 mos</span>
+                    <input type="text" placeholder="eg. 3619" ng-model="newProduct.three">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">5 mos</span>
+                    <input type="text" placeholder="eg. 2451" ng-model="newProduct.five">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">11 mos</span>
+                    <input type="text" placeholder="eg. 1435" ng-model="newProduct.eleven">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">14 mos</span>
+                    <input type="text" placeholder="eg. 1226" ng-model="newProduct.fourteen">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">17 mos</span>
+                    <input type="text" placeholder="eg. 1114" ng-model="newProduct.seventeen">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">20 mos</span>
+                    <input type="text" placeholder="eg. 1017" ng-model="newProduct.twenty">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">24 mos</span>
+                    <input type="text" placeholder="eg. 952" ng-model="newProduct.twentyfour">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">lcp</span>
+                    <input type="text" placeholder="eg. 10601" ng-model="newProduct.lcp">
+                </label>
+
+
+        </div>
+        <button class="button button-block button-outline button-balanced  icon-left ion-android-add" ng-click="saveProduct()" ng-disabled="myForm.$invalid">Add</button>
+        </form>
+    </ion-content>
+
+
+</ion-view>
+
+<script id="pick-days-modal.html" type="text/ng-template">
+    <div class="modal">
+
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button ng-click="hidePickDays()" class="button button-positive button-icon ion-android-arrow-back">
+            </button>
+            <h1 class="title">Pick Day(s)</h1>
+        </ion-header-bar>
+
+
+        <ion-content>
+            <ion-list>
+                <ion-checkbox ng-model="day.isChecked" ng-repeat="day in days">{{day.day}}
+
+                    <div ng-repeat="selectedDay in newSubject.selectedDays" ng-if="selectedDay ==day.day" ng-init="day.isChecked=true">
+                    </div>
+                </ion-checkbox>
+
+                <div ng-repeat="day in days" ng-if="day.isChecked" ng-init="updateDay(day.day)"></div>
+                <div ng-repeat="day in days" ng-if="!day.isChecked" ng-init="updateDay(day.day)"></div>
+
+            </ion-list>
+        </ion-content>
+
+    </div>
+
+</script>
