@@ -15,8 +15,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
             if (window.StatusBar) {
                 // org.apache.cordova.statusbar required
-                StatusBar.styleDefault();
-                // StatusBar.hide();
+                // StatusBar.styleDefault();
+                StatusBar.hide();
             }
 
             // Initialize database
@@ -68,7 +68,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         })
 
         .state('app.update-product', {
-            url: "/update-product",
+            url: "/update-product/:productId",
             views: {
                 'menuContent': {
                     templateUrl: "templates/product.html",
@@ -92,8 +92,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         })
 
+
+
         .state('app.search', {
-            url: "/search",
+            url: "/search/:searchKey",
             views: {
                 'menuContent': {
                     templateUrl: "templates/search.html",
@@ -101,6 +103,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 }
             }
         })
+
+        // .state('app.search-by-category', {
+        //     url: "/search-by-category/:searchKey",
+        //     views: {
+        //         'menuContent': {
+        //             templateUrl: "templates/search.html",
+        //             controller: 'SearchCtrl',
+        //              resolve: {
+        //                 searchBy: function() {
+        //                     return 'category';
+        //                 }
+        //             }
+        //         }
+        //     }
+        // })
+
+        // .state('app.search-by-brand', {
+        //     url: "/search-by-brand/:searchKey",
+        //     views: {
+        //         'menuContent': {
+        //             templateUrl: "templates/search.html",
+        //             controller: 'SearchCtrl',
+        //              resolve: {
+        //                 searchBy: function() {
+        //                     return 'brand';
+        //                 }
+        //             }
+        //         }
+        //     }
+        // })
 
         .state('app.feedback', {
             url: "/feedback",
@@ -149,7 +181,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         };
     })
     .constant('DB_CONFIG', {
-        name: 'WilkrisDb.beta.1.0.3',
+        name: 'WilkrisDb.beta.1.0.7',
         tables: {
             products: {
                 id: 'integer primary key',

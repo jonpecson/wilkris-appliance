@@ -10,15 +10,15 @@
 
             <div class="col">
 
-                <div ng-if="($index%2==0)" ng-repeat="subject in subjects">
+                <div ng-if="($index%2==0)" ng-repeat="product in products">
 
-                    <div class="card topics-page-card" ng-click="checkAttendance(subject)">
+                    <div class="card topics-page-card" ng-click="viewProduct(product)">
 
                         <div>
-                            <img ng-src="img/{{subject.icon}}" class="topics-img" >
+                            <img ng-src="{{product.image}}" class="topics-img" >
 
                             <div class="topic-name-topic">
-                                <p>{{subject.subjectName}}</p><i class="icon ion-arrow-right-b"></i>
+                                <p>{{product.model}}</p><i class="icon ion-arrow-right-b"></i>
                             </div>
                         </div>
                     </div>
@@ -30,14 +30,14 @@
 
             <div class="col">
 
-                <div ng-if="!($index%2==0)" ng-repeat="subject in subjects">
+                <div ng-if="!($index%2==0)" ng-repeat="product in products">
 
-                    <div class="card topics-page-card" ng-click="checkAttendance(subject)">
+                    <div class="card topics-page-card" ng-click="viewProduct(product)">
                         <div>
-                            <img ng-src="img/{{subject.icon}}" class="topics-img">
+                            <img ng-src="{{product.image}}" class="topics-img">
                         </div>
                         <div class="topic-name-topic">
-                            <p>{{subject.subjectName}}</p>
+                            <p>{{product.model}}</p>
                             <i class="icon ion-arrow-right-b"></i>
                         </div>
                     </div>

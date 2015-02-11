@@ -24,18 +24,18 @@
                     <div class="col">
                         <div class="card topics-page-card">
                             <div>
-                                <img ng-src="img/wilkris/logo/ge.png" class="topics-img" ui-sref="app.home" ng-click="">
+                                <img ng-src="img/wilkris/logo/ge.png" class="topics-img" ui-sref="app.search({searchKey: 'GE'})" ng-click="">
                             </div>
-                            <div class="topic-name-topic" ui-sref="app.home" ng-click="">
+                            <div class="topic-name-topic" ui-sref="app.search({searchKey: 'GE'})" ng-click="">
                                 <p>GE</p><i class="icon ion-arrow-right-b"></i>
                             </div>
                         </div>
                         <p></p>
                         <div class="card topics-page-card">
                             <div>
-                                <img ng-src="img/wilkris/logo/lg.jpg" class="topics-img" ui-sref="app.home" ng-click="">
+                                <img ng-src="img/wilkris/logo/lg.jpg" class="topics-img" ui-sref="app.search({searchKey: 'LG'})" ng-click="">
                             </div>
-                            <div class="topic-name-topic" ui-sref="app.home" ng-click="">
+                            <div class="topic-name-topic" ui-sref="app.search({searchKey: 'LG'})" ng-click="">
                                 <p>LG</p><i class="icon ion-arrow-right-b"></i>
                             </div>
                         </div>
@@ -45,9 +45,9 @@
                         
                         <div class="card topics-page-card">
                             <div>
-                                <img ng-src="img/wilkris/logo/haier1.jpg" class="topics-img" ui-sref="app.home" ng-click="">
+                                <img ng-src="img/wilkris/logo/haier1.jpg" class="topics-img" ui-sref="app.search({searchKey: 'Haeir'})" ng-click="">
                             </div>
-                            <div class="topic-name-topic" ui-sref="app.home" ng-click="">
+                            <div class="topic-name-topic" ui-sref="app.search({searchKey: 'Haeir'})" ng-click="">
                                 <p>Haeir</p><i class="icon ion-arrow-right-b"></i>
                             </div>
                         </div>
@@ -56,9 +56,9 @@
 
                         <div class="card topics-page-card">
                             <div>
-                                <img ng-src="img/wilkris/logo/samsung.jpg" class="topics-img" ui-sref="app.home" ng-click="">
+                                <img ng-src="img/wilkris/logo/samsung.jpg" class="topics-img" ui-sref="app.search({searchKey: 'Samsung'})" ng-click="">
                             </div>
-                            <div class="topic-name-topic" ui-sref="app.home" ng-click="">
+                            <div class="topic-name-topic" ui-sref="app.search({searchKey: 'Samsung'})" ng-click="">
                                 <p>Samsung</p><i class="icon ion-arrow-right-b"></i>
                             </div>
                         </div>
@@ -79,9 +79,9 @@
 
                 <div class="card topics-page-card">
                     <div>
-                        <img ng-src="img/wilkris/aircon.png" class="topics-img" ui-sref="app.home" ng-click="">
+                        <img ng-src="img/wilkris/aircon.png" class="topics-img" ui-sref="app.search({searchKey: 'Aircon'})" ng-click="">
                     </div>
-                    <div class="topic-name-topic" ui-sref="app.home" ng-click="">
+                    <div class="topic-name-topic" ui-sref="app.search({searchKey: 'Aircon'})" ng-click="">
                         <p>Aircon</p><i class="icon ion-arrow-right-b"></i>
                     </div>
                 </div>
@@ -97,9 +97,9 @@
                 <div class="col">
                     <div class="card topics-page-card">
                         <div>
-                            <img ng-src="img/wilkris/ref.png" class="topics-img" ui-sref="app.home" ng-click="">
+                            <img ng-src="img/wilkris/ref.png" class="topics-img" ui-sref="app.search({searchKey: 'Refrigerator'})" ng-click="">
                         </div>
-                        <div class="topic-name-topic" ui-sref="app.home" ng-click="">
+                        <div class="topic-name-topic" ui-sref="app.search({searchKey: 'Refrigerator'})" ng-click="">
                             <p>Refrigerator</p><i class="icon ion-arrow-right-b"></i>
                         </div>
                     </div>
@@ -108,9 +108,9 @@
 
                     <div class="card topics-page-card">
                         <div>
-                            <img ng-src="img/wilkris/tv.png" class="topics-img" ui-sref="app.home" ng-click="">
+                            <img ng-src="img/wilkris/tv.png" class="topics-img" ui-sref="app.search({searchKey: 'Television'})" ng-click="">
                         </div>
-                        <div class="topic-name-topic" ui-sref="app.home" ng-click="">
+                        <div class="topic-name-topic" ui-sref="app.search({searchKey: 'Television'})" ng-click="">
                             <p>Television</p><i class="icon ion-arrow-right-b"></i>
                         </div>
                     </div>
@@ -119,10 +119,10 @@
 
                     <div class="card topics-page-card">
                         <div>
-                            <img ng-src="img/wilkris/washing.png" class="topics-img" ui-sref="app.home" ng-click="">
+                            <img ng-src="img/wilkris/washing.png" class="topics-img" ui-sref="app.search({searchKey: 'Washing Machine'})" ng-click="">
                         </div>
 
-                        <div class="topic-name-topic" ui-sref="app.home" ng-click="">
+                        <div class="topic-name-topic" ui-sref="app.search({searchKey: 'Washing Machine'})" ng-click="">
                             <p>Washing Machine</p><i class="icon ion-arrow-right-b"></i>
                         </div>
                     </div>
@@ -147,11 +147,11 @@
                         <h6>
                       Brand: {{p.brand}} , Category: {{p.category}}
                     </h6>
-                        <ion-option-button class="button-balanced" ng-click="viewProduct(student)">View
+                        <ion-option-button class="button-balanced" ng-click="viewProduct(p)">View
                         </ion-option-button>
-                        <ion-option-button class="button-positive" ng-click="editProductt(student)">Edit
+                        <ion-option-button class="button-positive" ng-click="editProduct(p)">Edit
                         </ion-option-button>
-                        <ion-option-button class="button-assertive" ng-click="deleteProduct(student)">
+                        <ion-option-button class="button-assertive" ng-click="deleteProduct(p)">
                             Delete
                         </ion-option-button>
                     </ion-item>

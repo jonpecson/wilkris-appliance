@@ -1,54 +1,94 @@
 angular.module('starter.controllers', [])
 
 // Status : INC
-.controller('AppCtrl', function($scope, $timeout, $rootScope, $state, $timeout, DB, $window) {
+.controller('AppCtrl', function($scope, $window, Products) {
     // $scope.subjects = [];
 
-    $scope.$on('$ionicView.afterEnter', function() {
-        // getAllSubjects();
-    });
+    // $scope.$on('$ionicView.afterEnter', function() {
+    //     // getAllSubjects();
+    // });
+
+    $scope.products = [];
+
+    var getAllProducts = function() {
+        Products.getFirst(100).then(function(products) {
+            $scope.products = products;
+        });
+    }
+    getAllProducts();
+
+    $scope.viewProduct = function(p) {
+        $window.location = "#/app/product-detail/" + p.id;
+
+    }
 })
 
 
 // Status : On test
 .controller("ProductsCtrl", function($scope, Products, $window) {
     $scope.products = [];
-    console.log("Hey");
 
     var getAllProducts = function() {
-        console.log("Hey");
         Products.getFirst(100).then(function(products) {
             $scope.products = products;
-            console.log($scope.products);
-
         });
     }
     getAllProducts();
 
-    $scope.$on('$ionicView.afterEnter', function() {
-        getAllProducts();
-        console.log($scope.products);
-    });
+    // $scope.$on('$ionicView.afterEnter', function() {
+    //     getAllProducts();
+    //     console.log($scope.products);
+    // });
     $scope.viewProduct = function(p) {
-        console.log("Product detail");
         $window.location = "#/app/product-detail/" + p.id;
 
     }
 
+    $scope.editProduct = function(p) {
+        $window.location = "#/app/update-product/" + p.id;
+
+    }
+
+
 })
 
-.controller("ProductCtrl", function($scope, $cordovaCamera, DB, Data, $window, action) {
-    console.log(action);
+.controller("ProductCtrl", function($scope, $cordovaCamera, DB, Data, $window, action, $stateParams, Products) {
+    var productId = $stateParams.productId;
     $scope.newProduct = {};
     $scope.temp = {};
-    $scope.isFeatured = {
-        text: "Featured",
-        checked: true
-    };
-
-
+    $scope.temp.category = {};
+    $scope.temp.brand = {};
     $scope.brands = Data.getAllBrands();
     $scope.categories = Data.getAllCategories();
+
+
+    if (action === 'new') {
+
+        $scope.isFeatured = {
+            text: "Featured",
+            checked: true
+        };
+    };
+
+    if (action === 'update') {
+        Products.getById(productId).then(function(p) {
+            console.log(p[0]);
+            $scope.newProduct = p[0];
+
+            $scope.isFeatured = {
+                text: "Featured",
+                checked: Boolean($scope.newProduct.featured)
+            };
+
+            var image = document.getElementById('myImage');
+            image.src = $scope.newProduct.image;
+
+            $scope.temp.category.categoryName = $scope.newProduct.category;
+            $scope.temp.brand.brandName = $scope.newProduct.brand;
+        })
+
+    };
+
 
 
 
@@ -82,15 +122,40 @@ angular.module('starter.controllers', [])
 
     $scope.saveProduct = function() {
 
-        var time = moment();
-        var timeStamp = new Date(time).getTime();
-        $scope.newProduct.id = timeStamp;
-        $scope.newProduct.featured = Number($scope.isFeatured.checked)
-        $scope.newProduct.brand = $scope.temp.brand.brandName;
-        $scope.newProduct.category = $scope.temp.category.categoryName;
-        console.log(Number($scope.isFeatured.checked));
-        DB.insertAll('products', [$scope.newProduct]);
-        $window.location = "#/app/products";
+        if (action === 'new') {
+            var time = moment();
+            var timeStamp = new Date(time).getTime();
+            $scope.newProduct.id = timeStamp;
+            $scope.newProduct.featured = Number($scope.isFeatured.checked)
+            $scope.newProduct.brand = $scope.temp.brand.brandName;
+            $scope.newProduct.category = $scope.temp.category.categoryName;
+            DB.insertAll('products', [$scope.newProduct]);
+            $window.location = "#/app/products";
+        };
+
+        if (action === 'update') {
+            // Delete current product
+            Products.deleteById(productId).then(function(result) {
+                console.log(result);
+                $scope.newProduct.featured = Number($scope.isFeatured.checked)
+                $scope.newProduct.brand = $scope.temp.brand.brandName;
+                $scope.newProduct.category = $scope.temp.category.categoryName;
+                DB.insertAll('products', [$scope.newProduct]);
+                $window.location = "#/app/products";
+                // console.log($scope.newProduct);
+                console.log($scope.newProduct);
+            });
+
+
+
+            // Insert existing product
+            // $scope.newProduct.id = productId;
+
+
+        };
+
+
+
 
 
     }
@@ -109,8 +174,27 @@ angular.module('starter.controllers', [])
     });
 })
 
-.controller('SearchCtrl', function($scope) {
+.controller('SearchCtrl', function( $scope, Products, $window, $stateParams) {
+    $scope.searchKey= $stateParams.searchKey;
+    
     $scope.products = [];
+
+    var getAllProducts = function() {
+        Products.getFirst(100).then(function(products) {
+            $scope.products = products;
+        });
+    }
+    getAllProducts();
+
+    $scope.viewProduct = function(p) {
+        $window.location = "#/app/product-detail/" + p.id;
+
+    }
+
+    $scope.editProduct = function(p) {
+        $window.location = "#/app/update-product/" + p.id;
+
+    }
 })
 
 

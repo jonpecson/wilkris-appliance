@@ -4,12 +4,32 @@
 
     </ion-nav-buttons>
     <ion-content class="padding spc-from-header" scrollbar-y="false" style="margin-top: -17px">
-       
-       <div class="item item-input-inset">
+
+        <div class="item item-input-inset">
             <label class="item-input-wrapper">
                 <i class="icon ion-search placeholder-icon"></i>
-                <input type="text" placeholder="Search" ng-model="searchKey" >
+                <input type="text" placeholder="Search" ng-model="searchKey">
             </label>
         </div>
+
+        <ion-list>
+
+            <ion-item class="item-remove-animate item-avatar" ng-repeat="p in products | filter : searchKey" type="item-text-wrap" ng-click="viewProduct(p)">
+                <img ng-src="{{p.image}}">
+                <h2>{{p.model}}</h2>
+                <p>{{p.desc}}</p>
+                <h6>
+                      Brand: {{p.brand}} , Category: {{p.category}}
+                    </h6>
+                <ion-option-button class="button-balanced" ng-click="viewProduct(p)">View
+                </ion-option-button>
+                <ion-option-button class="button-positive" ng-click="editProduct(p)">Edit
+                </ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="deleteProduct(p)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+
+        </ion-list>
     </ion-content>
 </ion-view>
