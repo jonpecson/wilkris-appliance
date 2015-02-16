@@ -23,9 +23,9 @@
                     </h6>
                 <ion-option-button class="button-balanced" ng-click="viewProduct(p)">View
                 </ion-option-button>
-                <ion-option-button class="button-positive" ng-click="editProduct(p)">Edit
+                <ion-option-button class="button-positive" ng-click="editProduct(p)" ng-show="isLoggedIn">Edit
                 </ion-option-button>
-                <ion-option-button class="button-assertive" ng-click="deleteProduct(p)">
+                <ion-option-button class="button-assertive" ng-click="deleteProduct(p)" ng-show="isLoggedIn">
                     Delete
                 </ion-option-button>
             </ion-item>

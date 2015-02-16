@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'tc.chartjs'])
 
-.run(function($ionicPlatform, DB) {
+.run(function($ionicPlatform, DB, $rootScope) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -21,7 +21,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
             // Initialize database
             DB.init();
+            navigator.splashscreen.hide()
         });
+
+        $rootScope.isLoggedIn = false;
     })
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -37,7 +40,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             url: "/home",
             views: {
                 'menuContent': {
-                    templateUrl: "templates/home.html"
+                    templateUrl: "templates/home.html",
+                    controller: 'HomeCtrl'
                 }
             }
         })
@@ -154,15 +158,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         })
 
-        .state('login', {
+        .state('/login', {
             url: "/login",
-            templateUrl: "templates/login.html",
-            controller: 'LoginCtrl'
+                    templateUrl: "templates/login.html",
+                    controller: 'LoginCtrl'
         });
 
         // if none of the above states are matched, use this as the fallback
         // $urlRouterProvider.otherwise('/app/home');
-        $urlRouterProvider.otherwise('/app/home');
+        $urlRouterProvider.otherwise('/login');
     })
     .filter('fromNow', ['$window', function($window) {
         return function(dateString) {

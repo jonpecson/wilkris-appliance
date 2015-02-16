@@ -1217,7 +1217,7 @@ i.thumb {
     font-size: 14px
 }
 .card-link-text {
-    color: #ffab40;
+    color: #ffffff;
     font-size: 14px!important;
     display: block;
     text-align: center;
@@ -1325,7 +1325,7 @@ i.thumb {
     top: -5px
 }
 .side-bar-background {
-    background: url(../img/side.png);
+    background: url(../img/side2.png);
     background-size: cover;
     width: 115%
 }
@@ -1632,7 +1632,7 @@ div.topic-name-topic i {
 }
 .content-sug-icon {
     margin-left: -3px!important;
-    color: #4CAF50
+    color: #FFFFFF;
 }
 .extra-margin-card {
     margin: 18px 30px!important;

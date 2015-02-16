@@ -7,8 +7,8 @@
     <ion-nav-buttons side="left" class="bar-positive big-bar no-shadow" animation="no-animation">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
-    <ion-nav-buttons side="right" class="bar-positive big-bar no-shadow" animation="no-animation">
-        <a class="button button-icon icon ion-android-add" ui-sref="app.new-product"></a>
+    <ion-nav-buttons side="right" class="bar-positive big-bar no-shadow" animation="no-animation" >
+        <a class="button button-icon icon ion-android-add" ui-sref="app.new-product" ng-show="isLoggedIn"></a>
     </ion-nav-buttons>
 
 
@@ -45,10 +45,10 @@
                         
                         <div class="card topics-page-card">
                             <div>
-                                <img ng-src="img/wilkris/logo/haier1.jpg" class="topics-img" ui-sref="app.search({searchKey: 'Haeir'})" ng-click="">
+                                <img ng-src="img/wilkris/logo/haier1.jpg" class="topics-img" ui-sref="app.search({searchKey: 'Haier'})" ng-click="">
                             </div>
-                            <div class="topic-name-topic" ui-sref="app.search({searchKey: 'Haeir'})" ng-click="">
-                                <p>Haeir</p><i class="icon ion-arrow-right-b"></i>
+                            <div class="topic-name-topic" ui-sref="app.search({searchKey: 'Haier'})" ng-click="">
+                                <p>Haier</p><i class="icon ion-arrow-right-b"></i>
                             </div>
                         </div>
 
@@ -149,9 +149,9 @@
                     </h6>
                         <ion-option-button class="button-balanced" ng-click="viewProduct(p)">View
                         </ion-option-button>
-                        <ion-option-button class="button-positive" ng-click="editProduct(p)">Edit
+                        <ion-option-button class="button-positive" ng-click="editProduct(p)" ng-show="isLoggedIn">Edit
                         </ion-option-button>
-                        <ion-option-button class="button-assertive" ng-click="deleteProduct(p)">
+                        <ion-option-button class="button-assertive" ng-click="deleteProduct(p)" ng-show="isLoggedIn">
                             Delete
                         </ion-option-button>
                     </ion-item>

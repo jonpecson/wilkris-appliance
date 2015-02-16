@@ -4,18 +4,15 @@
     </ion-nav-buttons>
 
     <ion-content scrollbar-y="false">
-        
-
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()" pulling-icon="ion-android-arrow-up">
+        </ion-refresher>
         <div class="row">
-
             <div class="col">
-
                 <div ng-if="($index%2==0)" ng-repeat="product in products">
-
                     <div class="card topics-page-card" ng-click="viewProduct(product)">
 
                         <div>
-                            <img ng-src="{{product.image}}" class="topics-img" >
+                            <img ng-src="{{product.image}}" class="topics-img">
 
                             <div class="topic-name-topic">
                                 <p>{{product.model}}</p><i class="icon ion-arrow-right-b"></i>
@@ -29,9 +26,7 @@
             </div>
 
             <div class="col">
-
                 <div ng-if="!($index%2==0)" ng-repeat="product in products">
-
                     <div class="card topics-page-card" ng-click="viewProduct(product)">
                         <div>
                             <img ng-src="{{product.image}}" class="topics-img">

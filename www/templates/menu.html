@@ -1,54 +1,61 @@
 <ion-side-menus>
 
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-positive nav-title-slide-ios7">
-      <ion-nav-back-button class="button-clear"><i class="icon ion-android-arrow-back"></i></ion-nav-back-button>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
-  </ion-side-menu-content>
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+            <ion-nav-back-button class="button-clear"><i class="icon ion-android-arrow-back"></i>
+            </ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+    <ion-side-menu side="left">
 
 
-            <ion-header-bar class="side-bar-header" >
-                <!-- <div class="item item-avatar profile-preview" ng-show="user">
+        <ion-header-bar class="side-bar-header">
+            <!-- <div class="item item-avatar profile-preview" ng-show="user">
                     <img ng-src="{{user.facebook.cachedUserProfile.picture.data.url}}">
                     <h2>{{ user.facebook.displayName }}</h2>
                     <p><a class="link" ng-click="logout()" href menu-close>Logout</a></p>
                 </div> -->
 
-                <div class="item item-avatar profile-preview" ng-hide="user">
-                    <!-- <img class="profile-picture" ng-src="img/ionic.png"> -->
-                    <img ng-src="img/ionic.png">
-                    <h2>Wilkris Appliance</h2>
-                    <p><a class="link" ng-click="login()" href="#/login" menu-close>Login</a></p>
-                </div>
+            <div class="item item-avatar profile-preview" ng-hide="user">
+                <!-- <img class="profile-picture" ng-src="img/ionic.png"> -->
+                <img ng-src="img/ionic.png">
+                <h2>Wilkris Appliance</h2>
+                <p>
+                    <a class="link" ng-click="login()" href="#/login" menu-close ng-hide="isLoggedIn">
+                    You're not logged in
+                    </a>
 
-            </ion-header-bar>
+                    <a class="link" ng-click="logout()" ng-show="isLoggedIn">Logout</a>
+                </p>
+            </div>
 
-            
-            
+        </ion-header-bar>
 
-            <ion-content class="side-menu-content-top">
-               <ion-list>
+
+
+
+        <ion-content class="side-menu-content-top">
+            <ion-list>
                 <ion-item nav-clear menu-close href="#/app/home">
-                <i class="icon ion-android-home side-menu-icon"></i>
-                  <span class="side-menu-text">Home</span>
+                    <i class="icon ion-android-home side-menu-icon"></i>
+                    <span class="side-menu-text">Home</span>
                 </ion-item>
 
                 <ion-item nav-clear menu-close href="#/app/products">
-                  <i class="icon ion-android-cart side-menu-icon"></i>
-                  <span class="side-menu-text">Products</span>
+                    <i class="icon ion-android-cart side-menu-icon"></i>
+                    <span class="side-menu-text">Products</span>
                 </ion-item>
 
                 <ion-item nav-clear menu-close href="#/app/search/">
-                  <i class="icon ion-android-search side-menu-icon"></i>
-                  <span class="side-menu-text">Search</span>
+                    <i class="icon ion-android-search side-menu-icon"></i>
+                    <span class="side-menu-text">Search</span>
                 </ion-item>
-                
+
                 <br>
 
-                <ion-item nav-clear menu-close href="#/app/feedback">
+                <!--<ion-item nav-clear menu-close href="#/app/feedback">
                   <i class="icon ion-mic-c side-menu-icon"></i>
                   <span class="side-menu-text">Feedback</span>
                 </ion-item>
@@ -56,8 +63,14 @@
                 <ion-item nav-clear menu-close href="#/app/about">
                   <i class="icon ion-social-android side-menu-icon"></i>
                   <span class="side-menu-text">About</span>
+                </ion-item> -->
+
+
+               <!--  <ion-item nav-clear menu-close href="#/login">
+                    <i class="icon ion-android-lock side-menu-icon"></i>
+                    <span class="side-menu-text">Login</span>
                 </ion-item>
-                
+ -->
                 <!-- <ion-item nav-clear menu-close href="#/app/home">
                   <i class="icon ion-social-rss side-menu-icon"></i>
                   <span class="side-menu-text">News</span>
@@ -80,10 +93,10 @@
                   <span class="side-menu-text">About</span>
                 </ion-item> -->
 
-              </ion-list>
+            </ion-list>
 
-             
-            </ion-content>
 
-  </ion-side-menu>
+        </ion-content>
+
+    </ion-side-menu>
 </ion-side-menus>

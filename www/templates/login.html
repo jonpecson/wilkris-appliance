@@ -1,19 +1,175 @@
-<ion-view title="Login"  hide-nav-bar="true">
-  <div class="bg-image red-car-img"></div>
+<style>
+.group {
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 26px;
+    margin-left: 13px;
+}
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #757575 !important;
+
+
+}
+input:focus {
+    outline: none;
+}
+label {
+    color: #999;
+    font-size: 16px !important;
+    font-family: dosis-medium!important;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 8px;
+    transition: .2s ease all;
+    -webkit-transition: .2s ease all;
+}
+.barip-input {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.barip-input:before,
+.barip-input:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #FFFFFF;
+    transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.barip-input:before {
+    left: 50%;
+}
+.barip:after {
+    right: 50%;
+}
+input:focus ~ .barip:before,
+input:focus ~ .barip:after {
+    width: 50%;
+}
+input:focus ~ label,
+input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+input[type="text"] {
+    margin-left: 6px;
+        color: #FFF;
+    font-family: dosis-medium;
+}
+input[type="password"] {
+    margin-left: 6px;
+        color: #FFF;
+    font-family: dosis-medium;
+}
+input:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+    -webkit-animation: inputHighlighter 0.3s ease;
+}
+@keyframes inputHighlighter {
+    from {
+        background: #FFFFFF;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #FFFFFF;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+.bar-subheader {
+    top: 57px;
+    display: block;
+    height: 41em;
+}
+
+.item{
+    background-color: transparent; 
+}
+
+input {
+    background-color: transparent;
+    border-bottom: 1px solid #FFFFFF !important;
+}
+label {
+    color: #FFFFFF;
+}
+</style>
+
+<ion-view title="Login"  hide-nav-bar="true" class="login-pane">
   <ion-content padding="true" scroll="false">
-    <h1 class='login-title padding'>Love taking attendance? <br><br>Make it Fun.</h1>
+    <!-- <h1 class='login-title padding'>Welcome to Wilkris Appliance!</h1> -->
     
     <div class='login-bottom'>
-      <button type="button" ng-click="login('facebook')" class="button button-block button-positive">
-       <i class="icon ion-social-facebook"></i> Connect with Facebook
-      </button>
 
-      <div class='small respect-privacy text-center'>We will not post anything in Facebook without your approval. </div>
+        <form>
+            <div class="item item-icon-left item-icon-right"><i class="icon ion-android-person content-sug-icon"></i>
+                <div class="group">
+                    <input type="text" required="" ng-model="user.username"><span class="highlight"></span> <span class="barip"></span>
+                    <label>Name</label>
+                </div>
+            </div>
+            <div class="item item-icon-left item-icon-right"><i class="icon ion-android-lock content-sug-icon"></i>
+                <div class="group">
+                    <input type="password" required="" ng-model="user.password"><span class="highlight"></span> <span class="barip"></span>
+                    <label>Password</label>
+                </div>
+            </div>
+            <div class="card-link-text sug-post" ng-click="login(user)">Login</div>
+            <div class="card-link-text sug-post" ng-click="skip()">Skip</div>
+        </form>
 
       <br/>
-      <div class='text-center'>
-        <a ui-sref="app.home" class="forgot-password">Skip</a>
-      </div>
+      <br/>
     </div>
   </ion-content>
 </ion-view>
+<!-- <ion-view view-title="Login">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-android-menu "></button>
+    </ion-nav-buttons>
+    <div class="bar bar-subheader" style="padding-top:11px;">
+        <form>
+            <div class="item item-icon-left item-icon-right"><i class="icon ion-android-person content-sug-icon"></i>
+                <div class="group">
+                    <input type="text" required="" ng-model="feedback.userName"><span class="highlight"></span> <span class="barip"></span>
+                    <label>Name</label>
+                </div>
+            </div>
+            <div class="item item-icon-left item-icon-right"><i class="icon ion-android-lock content-sug-icon"></i>
+                <div class="group">
+                    <input type="password" required="" ng-model="feedback.userEmail"><span class="highlight"></span> <span class="barip"></span>
+                    <label>Password</label>
+                </div>
+            </div>
+            <div class="card-link-text sug-post" ng-click="submit()">SUBMIT</div>
+        </form>
+    </div>
+    <ion-content class="padding spc-from-header" scrollbar-y="false"></ion-content>
+</ion-view> -->

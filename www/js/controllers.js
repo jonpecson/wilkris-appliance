@@ -1,21 +1,60 @@
 angular.module('starter.controllers', [])
 
 // Status : INC
-.controller('AppCtrl', function($scope, $window, Products) {
+.controller('AppCtrl', function($window, $rootScope, $scope) {
     // $scope.subjects = [];
 
     // $scope.$on('$ionicView.afterEnter', function() {
     //     // getAllSubjects();
     // });
 
+    $scope.logout = function() {
+        $rootScope.isLoggedIn = false;
+        $window.location = "#/login";
+    }
+
+})
+
+.controller('HomeCtrl', function($timeout, $scope, $window, Products) {
+    console.log("HomeCtrl invoked");
     $scope.products = [];
 
+
+
     var getAllProducts = function() {
+        console.log("getAllProducts invoked");
         Products.getFirst(100).then(function(products) {
             $scope.products = products;
+            console.log("getAllProducts invoked: " + products.length);
+            $scope.$broadcast('scroll.refreshComplete');
         });
     }
-    getAllProducts();
+
+    $scope.doRefresh = function() {
+        getAllProducts();
+    }
+
+    // getAllProducts();
+
+    // if ($scope.products.length == 0) {
+    //     $timeout(function() {
+    //         getAllProducts();
+
+    //         console.log("$timeout invoked");
+    //     }, 1000);
+    // };
+
+    $timeout(function() {
+        getAllProducts();
+
+        console.log("$timeout invoked");
+    }, 100);
+
+
+    // $scope.$on('$ionicView.afterEnter', function() {
+    //     getAllProducts();
+    //     console.log("getAllProducts invoked");
+    // });
 
     $scope.viewProduct = function(p) {
         $window.location = "#/app/product-detail/" + p.id;
@@ -174,9 +213,9 @@ angular.module('starter.controllers', [])
     });
 })
 
-.controller('SearchCtrl', function( $scope, Products, $window, $stateParams) {
-    $scope.searchKey= $stateParams.searchKey;
-    
+.controller('SearchCtrl', function($scope, Products, $window, $stateParams) {
+    $scope.searchKey = $stateParams.searchKey;
+
     $scope.products = [];
 
     var getAllProducts = function() {
@@ -212,37 +251,58 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('LoginCtrl', function($scope, Auth, $timeout, $rootScope, $state) {
+.controller('LoginCtrl', function($scope, $timeout, $rootScope, $state, $window, $ionicViewService) {
 
 
-    $scope.auth = Auth;
-    // $scope.user = [];
+    // $scope.auth = Auth;
+    // // $scope.user = [];
 
-    $scope.login = function(provider) {
-        // 1. Check if $authWithOAuthPopup is available
-        $scope.auth.$authWithOAuthPopup(provider, function(error, authData) {
+    // $scope.login = function(provider) {
+    //     // 1. Check if $authWithOAuthPopup is available
+    //     $scope.auth.$authWithOAuthPopup(provider, function(error, authData) {
 
-            if (error) {
-                // 2. If $authWithOAuthPopup is not available   
-                if (error.code === "TRANSPORT_UNAVAILABLE") {
-                    // fall-back to browser redirects, and pick up the session
-                    // automatically when we come back to the origin page
-                    $scope.auth.$authWithOAuthRedirect(provider, function(error, authData) { /* ... */ });
-                }
-            }
+    //         if (error) {
+    //             // 2. If $authWithOAuthPopup is not available   
+    //             if (error.code === "TRANSPORT_UNAVAILABLE") {
+    //                 // fall-back to browser redirects, and pick up the session
+    //                 // automatically when we come back to the origin page
+    //                 $scope.auth.$authWithOAuthRedirect(provider, function(error, authData) { /* ... */ });
+    //             }
+    //         }
 
+    //     });
+    // };
+
+    $scope.login = function(user) {
+
+        if (user.username === 'admin' && user.password === 'admin') {
+            $rootScope.isLoggedIn = true;
+            $ionicViewService.nextViewOptions({
+                disableBack: true
+            });
+
+            $window.location = "#/app/home";
+
+            console.log("logged in");
+        };
+    }
+
+    $scope.skip = function() {
+        $ionicViewService.nextViewOptions({
+            disableBack: true
         });
-    };
+        $window.location = "#/app/home";
+    }
 
-    // On auth listener
-    $scope.auth.$onAuth(function() {
-        $timeout(function() {
-            $rootScope.user = $scope.auth.$getAuth();
-            if ($rootScope.user) {
-                $state.go('app.home');
-            };
+    // // On auth listener
+    // $scope.auth.$onAuth(function() {
+    //     $timeout(function() {
+    //         $rootScope.user = $scope.auth.$getAuth();
+    //         if ($rootScope.user) {
+    //             $state.go('app.home');
+    //         };
 
-        });
-    });
+    //     });
+    // });
 
 });

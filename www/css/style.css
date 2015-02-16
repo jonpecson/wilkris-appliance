@@ -18,10 +18,9 @@
     font-weight: 400;
     font-style: normal
 }
-
 /* Empty. Add your own CSS if you like */
-
 /* font */
+
 @font-face {
     font-family: roboto-lt;
     src: url(../fonts/Roboto-Light.ttf);
@@ -38,122 +37,124 @@
     font-family: roboto-thin;
     src: url(../fonts/Roboto-Thin.ttf);
 }
-
 h6 {
-	color : #8F8F8F;
-	margin-top: 2px;
+    color: #8F8F8F;
+    margin-top: 2px;
     margin-bottom: 2.33em;
     margin-left: 5px;
     margin-right: 5px;
 }
-
 .profile-preview {
-    background-color:#3F3F3F;
-    background: url(../img/side.png);
+    background-color: #3F3F3F;
+    background: url(../img/side2.png);
     background-size: cover;
     width: 115%
 }
 /*override*/
-.item-avatar > img:first-child {
-    border-radius:50%;
-    
-}
 
-.profile-preview > h2{
-    color:#BBBDC0;
+.item-avatar > img:first-child {
+    border-radius: 50%;
+}
+.profile-preview > h2 {
+    color: #BBBDC0;
     font-family: roboto-lt;
 }
-
 .link {
-    color:#FFFFFF;
-    text-decoration:none;
+    color: #FFFFFF;
+    text-decoration: none;
 }
-
-
 /*Login*/
+
 .small {
-  font-size:80% !important;
+    font-size: 80% !important;
 }
-
 .respect-privacy {
-  color:white;
+    color: white;
 }
-
 .text-center {
-  text-align: center;
+    text-align: center;
 }
-
 .bg-image {
-/*  position: fixed;
+    /*  position: fixed;
   width: 100%;
   height: 100%;*/
-  background-size: cover;
-  width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
-}
 
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -5000;
+}
 .red-car-img {
-  background-image: url("../img/login.jpg"); 
-
+    background-image: url("../img/ws2.jpg");
 }
-
+.login-pane {
+        /*background-color: #4CAF50;*/
+    background: url("../img/ws2.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
 .login-bottom {
-  position:absolute;
-  bottom: 40px;
-  right: 0px;
-  left: 0px;
+    position: relative;
+    bottom: 150px;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    /*padding-top: 350px;*/
 }
-
 .list {
-  background: white;
+    background: white;
 }
-
 .item-content .row, .item-content .col {
-  padding:0;
+    padding: 0;
 }
-
 .login-title {
-  color:white;
-  font-family: Trebuchet MS1, Trebuchet MS, sans-serif;
-  text-align: center;
-  font-size: 36px;
-  margin-top: 80px !important;
-  margin-bottom:20px;
+    color: white;
+    font-family: Trebuchet MS1, Trebuchet MS, sans-serif;
+    text-align: center;
+    font-size: 36px;
+    margin-top: 40px !important;
+    margin-bottom: 20px;
 }
-
 .padding map {
-  border: 1px solid lightgrey;
-  margin-top: -1px;
+    border: 1px solid lightgrey;
+    margin-top: -1px;
 }
-
 .bar-transparent h1 {
-  color:white;
+    color: white;
 }
-
 .pull-right {
-  float:right;
-  right:109x;
+    float: right;
+    right: 109x;
 }
-
 .forgot-password {
-  color:white;
-  margin-right:11px;
-  text-decoration: none;
-  margin-top:-13px;
+    color: white;
+    margin-right: 11px;
+    text-decoration: none;
+    margin-top: -13px;
 }
-
 /*Gallery*/
 
-.slider { 
-  /*height:auto; */
-  /*text-align: center;     
-  height: 100%;*/  
-  /*width: 100%; */
-width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
-
-      background-color: white;
+.slider {
+    /*height:auto; */
+    /*text-align: center;     
+  height: 100%;*/
+    /*width: 100%; */
+    
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -5000;
+    background-color: white;
 }
-.scroll { height: 100% }
-
+.scroll {
+    height: 100%
+}
 /*img {
     max-width: 100%;
     height: auto;  
@@ -162,51 +163,49 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
     padding-bottom: 20px; 
 }
 */
+
 #bg {
-  /* Set rules to fill background */
-  min-height: 100%;
-  min-width: 1024px;
-
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
+    /* Set rules to fill background */
+    
+    min-height: 100%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    
+    position: fixed;
+    top: 0;
+    left: 0;
 }
-
-
 /*About*/
 
 #profile-image {
-  display: block;
-  /*border-radius: 100px;*/
-  /*border: 0px solid #fff;*/
-  width: 90px;
-  height: 90px;
-  margin: 10px auto 0;
-  /*box-shadow: 0px 0px 4px rgba(0,0,0,0.7);*/
-  /*background-color: white;*/
+    display: block;
+    /*border-radius: 100px;*/
+    /*border: 0px solid #fff;*/
+    
+    width: 90px;
+    height: 90px;
+    margin: 10px auto 0;
+    /*box-shadow: 0px 0px 4px rgba(0,0,0,0.7);*/
+    /*background-color: white;*/
 }
-
 .circle {
-  border-radius: 100px;
+    border-radius: 100px;
 }
-
 /*Add subjects*/
 
-.optionList{
-    position:absolute;
-    width:100%;
-    z-index:100;
-   /* height:200px;*/
+.optionList {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    /* height:200px;*/
 }
-
 /*Students*/
 
- .profile-circle {
+.profile-circle {
     float: left;
     width: 55px;
     height: 55px;
@@ -221,11 +220,12 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
     padding-bottom: 0;
     padding-left: 5px;
 }*/
- .profile-circle.admin {
+
+.profile-circle.admin {
     border-color: #167ffb;
     padding-left: 15px;
 }
- .initials {
+.initials {
     float: left;
     width: 55px;
     margin: 9px -55px;
@@ -253,7 +253,6 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
     left: 50px;
     top: 40px;
 }
-
 /*.blur-dropshadow .member-name, .blur-dropshadow .accent, .blur-dropshadow .accent .button, .blur-dropshadow .item, .blur-dropshadow .initials, .blur-dropshadow .black, .blur-dropshadow .red, .blur-dropshadow .green, .blur-dropshadow .bar.bar-dark .title, .blur-dropshadow h1, .blur-dropshadow h2, .blur-dropshadow h3, .blur-dropshadow h4, .blur-dropshadow h5, .blur-dropshadow h6 {
     color: rgba(0, 0, 0, 0) !important;
 }
@@ -312,71 +311,70 @@ width:100%;height:100%;position:absolute;top:0;left:0;z-index:-5000;
     flex: 0 0 85%;
     max-width: 85%;
 }*/
-
 /*.accent, .accent .button {
     color: #167ffb;
 }*/
 
- .item-background {
+.item-background {
     background-image: url(../img/list-item-bg-kleiner.png);
     background-repeat: no-repeat;
     background-position: left top;
     padding-left: 20px;
 }
- .item-background.positive {
+.item-background.positive {
     background-image: url(../img/list-item-bg-positive-kleiner.png);
 }
- .item-background.negative {
+.item-background.negative {
     background-image: url(../img/list-item-bg-negative-kleiner.png);
 }
- .item-background.expenses {
+.item-background.expenses {
     background-image: url(../img/list-item-bg-expenses-kleiner.png);
 }
- .expenses .item-content {
+.expenses .item-content {
     padding-left: 0;
 }
-
-
 /*Student's face*/
+
 .image-container {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 0 0;
-  background-size: cover;
-  text-align: center;
-  background-color: rgba(128,128,128,0.50);
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 0;
+    background-size: cover;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.50);
 }
 .image-container img {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 300px;
-  margin: 0 auto;
-  padding: 0;
-  /*border-radius: 100%;*/
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 300px;
+    margin: 0 auto;
+    padding: 0;
+    /*border-radius: 100%;*/
 }
-
 /*Chart's legend*/
-.tc-chart-js-legend {
-  list-style-type: none;
-  padding-left: 0px;
-  display: table;   /* Allow the centering to work */
-  margin: 0 auto;
 
+.tc-chart-js-legend {
+    list-style-type: none;
+    padding-left: 0px;
+    display: table;
+    /* Allow the centering to work */
+    
+    margin: 0 auto;
 }
 .tc-chart-js-legend li {
-  display: block;
-  float: left;
-  /*clear:both;*/
-  padding:10px;
-  display: inline;
-
+    display: block;
+    float: left;
+    /*clear:both;*/
+    
+    padding: 10px;
+    display: inline;
 }
 .tc-chart-js-legend li span {
-  width:20px;
-  height:20px;
-  display:absolute;
-  float:left;
-  margin-right:10px;
-  border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: absolute;
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
 }
